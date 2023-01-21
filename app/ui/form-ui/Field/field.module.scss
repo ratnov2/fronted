@@ -1,0 +1,21 @@
+
+.field{
+  @apply relative mb-5;
+  label{
+    @apply text-gray-600 uppercase block w-full text-left;
+  }
+  input{
+    @apply focus:border-b-gray-600
+    bg-transparent border-0 border-b-2 
+    border-gray-600 text-gray-500 focus:outline-none 
+     focus:shadow-none focus:ring-0 w-full pl-0 py-3;
+  }
+  .errorBorder{
+    @apply border-b-primary focus:border-b-primary
+  }
+  span{
+    @apply text-sm absolute top-20 left-0 text-primary
+  }
+  
+
+}

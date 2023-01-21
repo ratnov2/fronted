@@ -1,0 +1,12 @@
+.twoRow {
+  @apply flex justify-between;
+}
+.select {
+  @apply flex justify-between;
+  > div {
+    @apply w-1/2 last:ml-6;
+    label {
+      @apply text-gray-600;
+    }
+  }
+}

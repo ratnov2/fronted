@@ -1,0 +1,19 @@
+.share {
+  @apply flex mt-10 items-center ;
+  .input {
+    @apply file:bg-primary file:rounded-2xl file:border-none 
+    file:text-white file:px-4 file:py-2 font-light text-xs file:text-base
+    file:focus:outline-none file:focus-visible:outline-none file:hover:bg-red-100
+    cursor-pointer;
+  }
+  .blockStyle {
+    @apply w-28 h-28 ml-7 bg-gray-700;
+
+    img{
+    @apply w-28 h-28  bg-gray-600;
+  }
+  span{
+   // @apply w-28 h-28 ml-7 bg-gray-600
+  }
+  }
+}

@@ -1,0 +1,36 @@
+
+
+.statistic{
+  @apply flex mt-8 text-center justify-around;
+
+  .count{
+    @apply w-80;
+    h1{
+      @apply text-5xl mt-14;
+    }
+    p{
+      @apply text-gray-500
+    }
+  }
+  .mostPopular{
+    @apply p-3 overflow-hidden w-80;
+    h1{
+      @apply font-bold
+    }
+    p{
+      @apply text-gray-500
+    }
+    img{
+      @apply w-52 h-28 m-auto rounded-lg
+    }
+  }
+  
+}
+.count,.mostPopular{
+  @apply bg-gray-950 w-60 border-red-200 rounded-xl h-48;
+
+}
+
+.count{
+
+}

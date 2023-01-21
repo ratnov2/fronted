@@ -1,0 +1,15 @@
+
+
+/* @import '../node_modules/react-redux-toastr/src/styles/'; */
+@import '../node_modules/react-redux-toastr/lib/css/react-redux-toastr.min.css';
+@import '../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body{
+  background-color: rgba(18, 21, 23, 0.980);
+  color:white;
+}

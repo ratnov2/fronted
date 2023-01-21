@@ -1,0 +1,22 @@
+
+
+.panel{
+  @apply flex w-full justify-around bg-gray-950 rounded-xl px-6 text-gray-500  ;
+
+  .item{
+    @apply relative transition-all delay-100 hover:text-white px-2 py-3 after:content-[''];
+
+    
+
+      
+    }
+    .active{
+      @apply text-white;
+      &::after{
+        @apply absolute text-red-100 w-full h-0.5 bg-primary left-0;
+        top: 2.85rem;
+      }
+  }
+  
+  
+}

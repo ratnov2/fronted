@@ -1,0 +1,47 @@
+.leftMenu {
+  width: 20%;
+  position: relative;
+  left: 0;
+  box-shadow: inset -1px 0em rgb(39, 39, 39);
+
+  @apply h-screen;
+  > img {
+    @apply mt-5;
+  }
+  .menuStyle {
+    @apply mt-5;
+    h3 {
+      @apply text-gray-500 font-bold ml-5 mb-3;
+    }
+  }
+  .figureMenu {
+    @apply flex items-center text-left ml-3 mb-3 text-base text-gray-500;
+    p {
+      @apply w-full border-transparent border-r-2;
+    }
+    svg {
+      @apply w-7 h-6 mr-3;
+    }
+    p,svg{
+      @apply transition duration-100 ease-in;
+    }
+    &:hover {
+      p {
+        @apply border-r-4 border-primary;
+      }
+      p,
+      svg {
+        @apply text-gray-300;
+      }
+    }
+  }
+  .active,
+  .active:hover {
+    p {
+      @apply text-primary font-medium;
+    }
+    svg {
+      @apply text-primary;
+    }
+  }
+}
