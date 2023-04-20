@@ -20,7 +20,7 @@ export const useCustomSearch = ()=>{
         data.map((el) => ({
           id:el._id,
           name:el.title,
-          genres:String(...el.genres.map((el2)=>el2.name)),
+          genres:String(...el.genres.map((el2:any)=>el2.name)),
           rating:el.rating,
           poster:el.poster,
         })),

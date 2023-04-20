@@ -2,10 +2,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
 
-import FavoriteButton from '../single-movie/FavoriteButton/FavoriteButton'
+
 
 import styles from './Favorites.module.scss'
 import { IFavoriteItem } from './favorites.interface'
+import FavoriteButton from 'ui/favorite-button/FavoriteButton'
 
 const FavoriteItem: FC<{ item: IFavoriteItem }> = ({ item }) => {
 	return (

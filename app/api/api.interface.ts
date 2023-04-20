@@ -1,4 +1,5 @@
-import { IGenres } from "@/components/Home/leftSidebar/menu.interface"
+import { IGenres } from "@/components/Layout/LeftSidebar/menu.interface"
+
 
 export interface TypePostAuth{
   email:string,
