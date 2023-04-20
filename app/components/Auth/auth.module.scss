@@ -1,17 +1,14 @@
-
-
-.form{
+.form {
   @apply bg-black rounded-2xl m-auto max-w-lg;
   text-align: center;
-  .share{
-    @apply mx-10
+  .share {
+    @apply mx-10;
   }
-  h2{
-    @apply text-gray-500 text-2xl p-5
+  h2 {
+    @apply text-gray-500 text-2xl p-5;
   }
-  .buttons{
+  .buttons {
     display: flex;
     justify-content: center;
   }
-
 }
