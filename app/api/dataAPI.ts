@@ -24,6 +24,16 @@ export const genresApi = {
     })
     return response
   },
+  async test(searchTerm?: string) {
+    const response = await $host.get<IGenre[]>('/', {
+      params: searchTerm
+        ? {
+            searchTerm,
+          }
+        : {},
+    })
+    return response
+  },
   async getCollections() {
     return $host.get<ICollection[]>('genres/collections')
   },

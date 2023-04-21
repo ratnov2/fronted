@@ -2,7 +2,7 @@ import axios from 'axios'
 import Cookies from 'js-cookie'
 
 export const $host = axios.create({
-  baseURL: 'http://localhost:4200/api/',
+  baseURL: '/api/',
 })
 
 $host.interceptors.request.use(
@@ -20,7 +20,7 @@ $host.interceptors.request.use(
 )
 
 export const $file = axios.create({
-  baseURL: 'http://localhost:4200/api/',
+  baseURL: '/api/',
   headers:{
     'Content-Type': 'multipart/form-data'
   }

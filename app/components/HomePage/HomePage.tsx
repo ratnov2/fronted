@@ -1,4 +1,4 @@
-import { actorsApi, movieApi } from '@/api/dataAPI'
+import { actorsApi, genresApi, movieApi } from '@/api/dataAPI'
 import { getActorUrl, getMovieUrl } from '@/configs/url.config'
 import React from 'react'
 import { useQuery } from 'react-query'
@@ -8,6 +8,7 @@ import Slider from 'ui/slider/Slider'
 import style from './home-page.module.scss'
 
 const HomePage = () => {
+  const test = useQuery('test', () => genresApi.test())
   const trend = useQuery('getTrendMovie', () => movieApi.mostPopular(), {
     select: ({ data }) =>
       data.map((el) => ({
@@ -26,7 +27,7 @@ const HomePage = () => {
   })
 
   return (
-    <div className='animate-fade'>
+    <div className="animate-fade">
       <Slider />
       <div className={style.galleryBlock}>
         <h1>Trending Now</h1>
