@@ -9,7 +9,7 @@ import {
 import { IUser } from '@/shared/types/user.types'
 import Cookies from 'js-cookie'
 import { ICollection } from 'ui/collections/collections.types'
-import { $file, $host } from './api'
+import { $file, $host, instance, uploadFileInstance } from './api'
 import { getContentType } from './api.helpers'
 import { TypePostAuth, TypesUserDataPut } from './api.interface'
 
@@ -221,8 +221,6 @@ export const actorsApi = {
 }
 export const fileApi = {
   async post(formData: any) {
-    // console.log(formData);
-
     const response = $file.post('files/', formData)
     return response
   },
@@ -236,4 +234,14 @@ export const ratingApi = {
     })
     return response
   },
+}
+export const DiscAPI = {
+  async uploadFile(path:string,name:string,file:Blob){
+
+
+   const link = await instance.get(`https://cloud-api.yandex.net/v1/disk/resources/upload?path=${path}/${name}`)
+   const upload = await uploadFileInstance.put(link.data.href,file)
+   return upload
+  }
+
 }
