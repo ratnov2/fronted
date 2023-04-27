@@ -19,7 +19,7 @@ const nextConfig = {
     return [
       {
         source: '/api/:path*',
-        destination: !url
+        destination: url
           ? `https://test2-ratnov2.vercel.app/api/:path*`
           : 'http://localhost:4200/api/:path*',
       },
