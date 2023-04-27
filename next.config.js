@@ -19,13 +19,17 @@ const nextConfig = {
     return [
       {
         source: '/api/:path*',
-        destination: url
+        destination: !url
           ? `https://test2-ratnov2.vercel.app/api/:path*`
           : 'http://localhost:4200/api/:path*',
       },
       {
         source: '/disk/:path*',
         destination: `https://cloud-api.yandex.net/v1/disk/:path*`,
+      },
+      {
+        source: '/_next/:path*',
+        destination: `http://localhost:4200/_next/:path*`,
       },
       // {
       //   source: '/image/:path*',
