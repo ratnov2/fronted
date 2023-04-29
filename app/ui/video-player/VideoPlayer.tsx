@@ -17,7 +17,7 @@ const VideoPlayer: FC<IVideoPlayer> = ({ videoSource, slug }) => {
 				'h-96': user,
 			})}
 		>
-			{user ? (
+			{!user ? (
 				<>
 					<video
 						ref={videoRef}

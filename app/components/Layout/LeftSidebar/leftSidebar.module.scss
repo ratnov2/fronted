@@ -2,6 +2,7 @@
   width: 20%;
   position: relative;
   left: 0;
+  padding-left: 20px;
   box-shadow: inset -1px 0em rgb(39, 39, 39);
 
   @apply h-screen;
@@ -11,11 +12,11 @@
   .menuStyle {
     @apply mt-5;
     h3 {
-      @apply text-gray-500 font-bold ml-5 mb-3;
+      @apply text-gray-500 font-bold mb-3;
     }
   }
   .figureMenu {
-    @apply flex items-center text-left ml-3 mb-3 text-base text-gray-500;
+    @apply flex items-center text-left mb-3 text-base text-gray-500;
     p {
       @apply w-full border-transparent border-r-2;
     }

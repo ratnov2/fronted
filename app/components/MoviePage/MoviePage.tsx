@@ -7,7 +7,6 @@ import RatingMovie from './RatingMovie'
 import { useMoviesPage } from '../../ui/video-player/useMoviePage'
 import VideoPlayer from 'ui/video-player/VideoPlayer'
 
-
 const MoviePage = () => {
   const { movie, ActorState, GenreState, movieByGenre } = useMoviesPage()
 
@@ -20,10 +19,19 @@ const MoviePage = () => {
             actor={ActorState}
             genre={GenreState}
           />
-          <VideoPlayer
+          {/* <VideoPlayer
             videoSource={movie.data.data.videoUrl}
             slug={movie.data.data.slug}
-          />
+          /> */}
+          <iframe
+            width="100%"
+            height="400px"
+            src={movie.data.data.videoUrl}
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          ></iframe>
           {movieByGenre.data && <Gallery items={movieByGenre.data} />}
           <RatingMovie
             movieRating={movie.data.data.rating}
@@ -31,7 +39,7 @@ const MoviePage = () => {
           />
         </>
       ) : (
-        <Page404 />
+        <div>Loading</div>
       )}
     </div>
   )

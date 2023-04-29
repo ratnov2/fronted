@@ -11,6 +11,7 @@ const nextConfig = {
       'test2-ratnov2.vercel.app',
       'i.postimg.cc',
       'downloader.disk.yandex.ru',
+      'www.youtube.com'
     ],
   },
   async rewrites() {
