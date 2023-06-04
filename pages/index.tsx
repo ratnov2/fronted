@@ -12,7 +12,7 @@ const Home:FC<any> = ({data}) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   // try {
-    const {data} = await $host.get('api/movies/most-popular')
+    const {data} = await $host.get('https://test2-ratnov2.vercel.app/api/movies/most-popular')
     //let gg = await data.json()
     return { props: { data } }
   // } catch (error) {

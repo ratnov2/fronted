@@ -1,7 +1,7 @@
 import StarRatings from 'react-star-ratings'
 import style from './movie-page.module.scss'
 import { FC, useState } from 'react'
-import { useMutation } from '@tanstack/react-query'
+import { useMutation } from 'react-query'
 import { ratingApi } from '@/api/dataAPI'
 
 export interface TypesRatingMovie {

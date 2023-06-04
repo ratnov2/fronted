@@ -3,7 +3,7 @@ import { getMovieUrl } from "@/configs/url.config"
 import { IActor, IGenre } from "@/shared/types/movie.types"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
-import { useMutation, useQuery } from "@tanstack/react-query"
+import { useMutation, useQuery } from "react-query"
 
 
 export const useMoviesPage = ()=>{
