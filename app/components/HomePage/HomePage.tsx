@@ -8,7 +8,6 @@ import Slider from 'ui/slider/Slider'
 import style from './home-page.module.scss'
 
 const HomePage = () => {
-  const test = useQuery('test', () => genresApi.test())
   const trend = useQuery('getTrendMovie', () => movieApi.mostPopular(), {
     select: ({ data }) =>
       data.map((el) => ({

@@ -3,16 +3,15 @@ import { getMovieUrl } from "@/configs/url.config"
 import { IActor, IGenre } from "@/shared/types/movie.types"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
-import { useMutation, useQuery } from "react-query"
+import { useMutation, useQuery } from "@tanstack/react-query"
 
 
 export const useMoviesPage = ()=>{
-
-
+  
   const { query } = useRouter()
 
   const movie = useQuery(
-    'getMovieById',
+    [String(query.movie)],
     () => movieApi.getById(String(query.movie)),
     {
       enabled: (!!query.movie),
@@ -23,7 +22,7 @@ export const useMoviesPage = ()=>{
   },[query])
 
   const movieByGenre = useQuery(
-    'getMovieByGenre',
+    ['getMovieByGenre'],
     () => movieApi.getByGenres(movie.data?.data.genres),
     {
       enabled: !!movie.data ,
@@ -35,7 +34,7 @@ export const useMoviesPage = ()=>{
     }
   )
 
-  const countUpdate = useMutation('countUpdate', () =>
+  const countUpdate = useMutation(['countUpdate'], () =>
     movieApi.countPost(movie.data ? movie.data?.data.slug : '')
   )
     
@@ -43,8 +42,8 @@ export const useMoviesPage = ()=>{
     if(!countUpdate.isSuccess && movie.data) countUpdate.mutate()
   }, [movie.data])
 
-  const genres = useQuery('getAllGenres', () => genresApi.getAll())
-  const actors = useQuery('getAllActors', () => actorsApi.getAll())
+  const genres = useQuery(['getAllGenres'], () => genresApi.getAll())
+  const actors = useQuery(['getAllActors'], () => actorsApi.getAll())
 
   const [ActorState, setActorState] = useState<IActor[]>()
   const [GenreState, setGenreState] = useState<IGenre[]>()
@@ -72,3 +71,7 @@ export const useMoviesPage = ()=>{
 
   return {movie,ActorState,GenreState, movieByGenre}
 }
+
+
+
+////

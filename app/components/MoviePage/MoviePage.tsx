@@ -5,11 +5,13 @@ import Page404 from '../../../pages/404'
 import MoviePoster from './MoviePoster'
 import RatingMovie from './RatingMovie'
 import { useMoviesPage } from '../../ui/video-player/useMoviePage'
-import VideoPlayer from 'ui/video-player/VideoPlayer'
+
 
 const MoviePage = () => {
   const { movie, ActorState, GenreState, movieByGenre } = useMoviesPage()
-
+  if (movie.isLoading) {
+    return <h1>loading</h1>;
+  }
   return (
     <div>
       {movie.data ? (

@@ -1,0 +1,24 @@
+
+.enter{
+  opacity: 1;
+}
+.enterRouter{
+  opacity: 0.5;
+}
+.exitActive{
+  animation: animation-opacity 2s ease ;
+}
+.exitDone{
+  display: none;
+}
+@keyframes animation-opacity {   
+  0% {     
+    opacity: 1;   
+  }   
+  50% {     
+    opacity: 1;   
+  } 
+  100% {
+    opacity: 0;   
+   }
+}

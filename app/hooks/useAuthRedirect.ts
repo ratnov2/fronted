@@ -4,10 +4,8 @@ import { useAuthState } from "./useAuthState"
 
 
 export const useAuthRedirect = ()=>{
-  
   const {user} = useAuthState()
- 
-  
+
   const router = useRouter()
   
   useEffect(()=>{

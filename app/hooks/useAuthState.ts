@@ -2,8 +2,6 @@ import { TypesUserState, TypesUserState2 } from "@/store/user/userSlice";
 import {useSelector} from 'react-redux'
 import { TypedUseSelectorHook } from 'react-redux'
 
-
-
 export const useTypedSelector: TypedUseSelectorHook<TypesUserState2> = useSelector
 // TS infers type: (state: RootState) => boolean
 //const selectIsOn = (state: any) => state.status

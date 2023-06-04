@@ -145,7 +145,7 @@ export const usersApi = {
 }
 export const movieApi = {
   async mostPopular() {
-    const response = await $host.get<IMoviePopular[]>(`movies/most-popular`)
+    const response = await $host.get<IMoviePopular[]>(`/movies/most-popular`)
     return response
   },
   async create() {
