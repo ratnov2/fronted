@@ -16,7 +16,7 @@ const CustomSearch = () => {
         className1="mt-10 ml-5"
         className2="w-48 "
       />
-      {value !== '' && allMovies.isSuccess && (
+      {/* {value !== '' && allMovies.isSuccess && (
         <div className={style.list}>
           {allMovies.data?.length ? (
             allMovies.data?.map((movie) => (
@@ -37,7 +37,7 @@ const CustomSearch = () => {
             <div className="text-white text-center my-4">Movies not found!</div>
           )}
         </div>
-      )}
+      )} */}
     </div>
   )
 }

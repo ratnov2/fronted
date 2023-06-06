@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { createContext, Dispatch, FC, SetStateAction, useState } from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
 // import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import Layout from '../Layout/Layout'
@@ -18,6 +18,7 @@ const queryClient = new QueryClient({
   },
 })
 
+
 const MainProvider: FC<{ children: React.ReactNode; Component: TypeRoles }> = ({
   children,
   Component,
@@ -27,10 +28,10 @@ const MainProvider: FC<{ children: React.ReactNode; Component: TypeRoles }> = ({
       <Provider store={store}>
         <QueryClientProvider client={queryClient}>
           <ReduxToastrCus />
-          <AuthProvider Component={Component}>
-          <RouterAndFirstLoading />
-            <Layout>{children}</Layout>
-          </AuthProvider>
+            <AuthProvider Component={Component}>
+              <RouterAndFirstLoading />
+              <Layout>{children}</Layout>
+            </AuthProvider>
         </QueryClientProvider>
       </Provider>
     </>

@@ -12,22 +12,22 @@ export const useCustomSearch = ()=>{
 
   const debouncedSearchTerm = useDebounce(value, 500)
 
-  const allMovies = useQuery(
-    'getAllMovies',
-    () => movieApi.getAllMovies(value),
-    {
-      select: ({ data }) =>
-        data.map((el) => ({
-          id:el._id,
-          name:el.title,
-          genres:String(...el.genres.map((el2:any)=>el2.name)),
-          rating:el.rating,
-          poster:el.poster,
-        })),
-      enabled: isSearching,
-      onSuccess: () => setIsSearching(false),
-    }
-  )
+  // const allMovies = useQuery(
+  //   'getAllMovies',
+  //   () => movieApi.getAllMovies(value),
+  //   {
+  //     select: ({ data }) =>
+  //       data.map((el) => ({
+  //         id:el._id,
+  //         name:el.title,
+  //         genres:String(...el.genres.map((el2:any)=>el2.name)),
+  //         rating:el.rating,
+  //         poster:el.poster,
+  //       })),
+  //     enabled: isSearching,
+  //     onSuccess: () => setIsSearching(false),
+  //   }
+  // )
 
 
   useEffect(() => {
@@ -39,5 +39,5 @@ export const useCustomSearch = ()=>{
   }, [debouncedSearchTerm])
 
 
-  return { allMovies, isValue, value, debouncedSearchTerm, isSearching }
+  return { allMovies:{isLoading:true}, isValue, value, debouncedSearchTerm, isSearching }
 }
