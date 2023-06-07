@@ -9,7 +9,7 @@ import {
 import { IUser } from '@/shared/types/user.types'
 import Cookies from 'js-cookie'
 import { ICollection } from 'ui/collections/collections.types'
-import { $file, $host, instance, uploadFileInstance } from './api'
+import { $file, $host} from './api'
 import { getContentType } from './api.helpers'
 import { TypePostAuth, TypesUserDataPut } from './api.interface'
 
@@ -144,8 +144,8 @@ export const usersApi = {
   },
 }
 export const movieApi = {
-  async mostPopular() {
-    const response = await $host.get<IMoviePopular[]>(`/movies/most-popular`)
+  async mostPopular(url:string = '') {
+    const response = await $host.get<IMoviePopular[]>(`${url}/movies/most-popular`)
     return response
   },
   async create() {
@@ -192,8 +192,8 @@ export const movieApi = {
 }
 
 export const actorsApi = {
-  async getAll(searchTerm?: string) {
-    const response = await $host.get<IActor[]>('actors', {
+  async getAll(searchTerm?: string,url:string = '') {
+    const response = await $host.get<IActor[]>(`${url}/actors`, {
       params: searchTerm
         ? {
             searchTerm,
@@ -235,13 +235,13 @@ export const ratingApi = {
     return response
   },
 }
-export const DiscAPI = {
-  async uploadFile(path:string,name:string,file:Blob){
+// export const DiscAPI = {
+//   async uploadFile(path:string,name:string,file:Blob){
 
 
-   const link = await instance.get(`https://cloud-api.yandex.net/v1/disk/resources/upload?path=${path}/${name}`)
-   const upload = await uploadFileInstance.put(link.data.href,file)
-   return upload
-  }
+//    const link = await instance.get(`https://cloud-api.yandex.net/v1/disk/resources/upload?path=${path}/${name}`)
+//    const upload = await uploadFileInstance.put(link.data.href,file)
+//    return upload
+//   }
 
-}
+// }
