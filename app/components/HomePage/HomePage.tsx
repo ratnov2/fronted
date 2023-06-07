@@ -1,32 +1,25 @@
 import { actorsApi, genresApi, movieApi } from '@/api/dataAPI'
 import { getActorUrl, getMovieUrl } from '@/configs/url.config'
+import { IMoviePopular } from '@/shared/types/movie.types'
+import { useGlobalProps } from 'global-props/contexts/GlobalPropsContext'
+import { GlobalProps } from 'global-props/GlobalProps'
 import React, { FC } from 'react'
 import { useQuery } from 'react-query'
 import Gallery from 'ui/gallery/Gallery'
 import Slider from 'ui/slider/Slider'
-import { getStaticProps } from '../../../pages'
 
 import style from './home-page.module.scss'
 
-const HomePage:FC<any> = ({movies}) => {
-
-  // const trend = useQuery('getTrendMovie', () => movieApi.mostPopular(), {
+const HomePage: FC<any> = () => {
+  const { actors, popularMovies } = useGlobalProps()
+  // const actors = useQuery('getAllActors', () => actorsApi.getAll(), {
   //   select: ({ data }) =>
   //     data.map((el) => ({
-  //       posterPath: el.poster,
-  //       name: el.title,
-  //       url: getMovieUrl(el._id),
+  //       posterPath: el.photo,
+  //       name: el.name,
+  //       url: getActorUrl(el._id),
   //     })),
   // })
-  console.log(movies)
-  const actors = useQuery('getAllActors', () => actorsApi.getAll(), {
-    select: ({ data }) =>
-      data.map((el) => ({
-        posterPath: el.photo,
-        name: el.name,
-        url: getActorUrl(el._id),
-      })),
-  })
 
   return (
     <div className="animate-fade">
@@ -38,10 +31,9 @@ const HomePage:FC<any> = ({movies}) => {
       </div>
       <div className={style.galleryBlock}>
         <h1>Best Actors</h1>
-        {actors.data && <Gallery items={actors.data} />}
+        {actors.length && <Gallery items={actors as any} />}
       </div>
     </div>
   )
 }
-//export {getStaticProps} from '../../../pages/index'
 export default HomePage
