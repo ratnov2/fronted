@@ -8,7 +8,7 @@ import { GlobalProps } from 'global-props/GlobalProps'
 export interface TypeComponentAuthFields {
   Component: TypeRoles
 }
-type TypeAppProps = AppProps & TypeComponentAuthFields & AppProps
+type TypeAppProps = AppProps & TypeComponentAuthFields
 
 export default function App({ Component, pageProps }: TypeAppProps) {
   return (

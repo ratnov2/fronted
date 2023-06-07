@@ -6,32 +6,28 @@ import Image from 'next/image'
 import Rating from 'ui/rating/Rating'
 import Button from 'ui/form-ui/button/Button'
 import Link from 'next/link'
+import { useGlobalProps } from 'global-props/contexts/GlobalPropsContext'
 const PopularMovies = () => {
-  const { popularMovies } = useReqRightSidebar()
-
+  const { popularMovies } = useGlobalProps()
   return (
     <div className={style.movie}>
       <h1>Popular Movies</h1>
-      {popularMovies.isLoading ? (
-        <SkeletonLoader />
-      ) : (
-        popularMovies.data &&
-        popularMovies.data.map((el) => {
+      {popularMovies.length &&
+        popularMovies.map((el) => {
           return (
-            <Link href={`/movie/${el.id}`} className={style.item} key={el.id}>
+            <Link href={`/movie/${el._id}`} className={style.item} key={el._id}>
               <Image width={60} height={150} alt="" src={el.poster} />
               <div>
                 <span>
-                  <h3>{el.name}</h3>
-                  <p>{el.genres}</p>
+                  <h3>{el.title}</h3>
+                  <p>{String(el.genres)}</p>
                 </span>
                 <Rating rating={el.rating} />
               </div>
             </Link>
           )
-        })
-      )}
-      <Button className='mx-5 py-2 w-44' >See more</Button>
+        })}
+      <Button className="mx-5 py-2 w-44">See more</Button>
     </div>
   )
 }
