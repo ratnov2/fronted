@@ -1,0 +1,37 @@
+@import '../../../assets/styles/variables';
+.sliderItem {
+  @apply overflow-hidden rounded-3xl;
+  .share {
+    @include fade-bg-gradient();
+    @apply w-[100%] h-[100%] absolute top-0;
+  }
+  .img {
+    @apply image-like-bg;
+  }
+  .description {
+    @apply absolute bottom-0 h-32 px-7;
+    p {
+      @apply text-3xl font-bold;
+    }
+    > span {
+      @apply block;
+    }
+    .watch {
+      @apply py-1.5 rounded-lg;
+    }
+  }
+  .genres {
+    span {
+      @apply ml-1;
+    }
+  }
+  a {
+    @apply h-3;
+    &:hover {
+      @apply text-gray-300;
+    }
+    span {
+      @apply underline underline-offset-1 ml-2 transition-all duration-150;
+    }
+  }
+}

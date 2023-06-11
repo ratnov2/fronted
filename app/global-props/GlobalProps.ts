@@ -1,6 +1,6 @@
 import { $host, BASE_URL } from '@/api/api'
 import { actorsApi, movieApi } from '@/api/dataAPI'
-import { getActorUrl } from '@/configs/url.config'
+import { getActorUrl, getMoviesUrl } from '@/configs/url.config'
 import { IActor, IMoviePopular } from '@/shared/types/movie.types'
 import { AxiosResponse } from 'axios'
 import {
@@ -16,16 +16,11 @@ export type GlobalProps = {
 }
 
 export async function fetchGlobalProps(): Promise<GlobalProps> {
-  const moviesPopular = await movieApi.mostPopular(BASE_URL)
+  const popularMovies = await movieApi.mostPopular(BASE_URL)
   const actors = await actorsApi.getAll('', BASE_URL)
-  const actorsConverted = actors.data.map((el) => ({
-    posterPath: el.photo,
-    name: el.name,
-    url: getActorUrl(el._id),
-  }))
   return {
-    popularMovies: moviesPopular.data,
-    actors: actorsConverted as any,
+    popularMovies:popularMovies.data,
+    actors: actors.data,
   }
 }
 export const GlobalProps = {

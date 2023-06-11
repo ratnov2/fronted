@@ -31,3 +31,30 @@ body{
 	box-sizing: border-box;
 	transform-style: preserve-3d;
 }
+
+.slide-animation-enter {
+	opacity: 1;
+	transform: scale(1);
+}
+.slide-animation-enter-active {
+	opacity: 0;
+	transform: scale(0.8);
+	transition: opacity 400ms, transform 400ms;
+}
+.slide-animation-enter-done{
+	opacity: 0;
+	transform: scale(0.8);
+}
+.slide-animation-exit {
+	transform: scale(0.4);
+	opacity: 0;
+}
+.slide-animation-exit-active {
+	opacity: 1;
+	transform: scale(1);
+	transition: opacity 400ms, transform 400ms;
+}
+.slide-animation-exit-done {
+	opacity: 1;
+	transform: scale(1);
+}

@@ -48,6 +48,7 @@ export interface IMoviePopular {
 	rating: number
 	slug: string
 }
+
 export interface IMovieFavorite {
 	_id: string
 	poster: string

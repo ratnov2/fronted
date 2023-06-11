@@ -1,37 +1,27 @@
-import { actorsApi, genresApi, movieApi } from '@/api/dataAPI'
-import { getActorUrl, getMovieUrl } from '@/configs/url.config'
-import { IMoviePopular } from '@/shared/types/movie.types'
-import { useGlobalProps } from 'global-props/contexts/GlobalPropsContext'
-import { GlobalProps } from 'global-props/GlobalProps'
-import React, { FC } from 'react'
-import { useQuery } from 'react-query'
+import React, { FC, useRef, useState } from 'react'
 import Gallery from 'ui/gallery/Gallery'
-import Slider from 'ui/slider/Slider'
 
 import style from './home-page.module.scss'
+import { useHomePageConvertedActorAndMovies } from './useHomePageConvertedActorAndMovies'
+import Slider from 'ui/slider/Slider'
 
 const HomePage: FC<any> = () => {
-  const { actors, popularMovies } = useGlobalProps()
-  // const actors = useQuery('getAllActors', () => actorsApi.getAll(), {
-  //   select: ({ data }) =>
-  //     data.map((el) => ({
-  //       posterPath: el.photo,
-  //       name: el.name,
-  //       url: getActorUrl(el._id),
-  //     })),
-  // })
-
+  const { popularActorsConverted, popularMoviesConverted } =
+    useHomePageConvertedActorAndMovies()
   return (
     <div className="animate-fade">
-      {/* <Slider /> */}
+      <Slider />
       <div className={style.galleryBlock}>
         <h1>Trending Now</h1>
-        {/* <Gallery items={movies} /> */}
-        {/* {trend.data && <Gallery items={trend.data} />} */}
+        {popularMoviesConverted.length !== 0 && (
+          <Gallery items={popularMoviesConverted} />
+        )}
       </div>
       <div className={style.galleryBlock}>
         <h1>Best Actors</h1>
-        {actors.length && <Gallery items={actors as any} />}
+        {popularActorsConverted.length !== 0 && (
+          <Gallery items={popularActorsConverted} />
+        )}
       </div>
     </div>
   )

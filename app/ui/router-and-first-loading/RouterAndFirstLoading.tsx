@@ -14,14 +14,19 @@ const RouterAndFirstLoading = () => {
   useEffect(() => {
     Router.events.on('routeChangeStart', (url) => {
       setIsLoadingRoute(true)
+      setIsHidden(true)
     })
     Router.events.on('routeChangeComplete', (url) => {
       setTimeout(() => {
         setIsLoadingRoute(false)
       }, 1000)
+      setTimeout(() => {
+        setIsHidden(false)
+      }, 1500)
     })
 
     Router.events.on('routeChangeError', (url) => {
+      setIsHidden(true)
       setIsLoadingRoute(false)
     })
   }, [Router])
@@ -29,8 +34,10 @@ const RouterAndFirstLoading = () => {
   useEffect(() => {
     setTimeout(() => {
       setIsLoadingFirst(false)
+    }, 1000)
+    setTimeout(() => {
       setIsHidden(false)
-    }, 2000)
+    }, 1500)
   }, [])
 
   useEffect(() => {
@@ -41,25 +48,26 @@ const RouterAndFirstLoading = () => {
     }
   }, [isLoadingRoute, isLoadingFirst])
 
-  const nodeRef = useRef(null)
+  const nodeRef = useRef<any>(null)
 
   return (
-    <CSSTransition
-      timeout={2000}
-      classNames={{
-        enter: style.enter,
-        enterActive: style.enterActive,
-        exit: style.exit,
-        exitActive: style.exitActive,
-        exitDone: style.exitDone,
-      }}
-      in={inProp}
-      nodeRef={nodeRef}
-    >
-      <div ref={nodeRef} className="h-[100vh] absolute z-50">
-        <Loader />
-      </div>
-    </CSSTransition>
+      <CSSTransition
+        timeout={1000}
+        classNames={{
+          enter: style.enter,
+          enterActive: style.enterActive,
+          exit: style.exit,
+          exitActive: style.exitActive,
+          exitDone: style.exitDone,
+        }}
+        in={inProp}
+        nodeRef={nodeRef}
+      >
+        <div ref={nodeRef} className="h-[100%] w-[100vw] absolute z-50">
+          <Loader />
+        </div>
+      </CSSTransition>
+
   )
 }
 export default RouterAndFirstLoading

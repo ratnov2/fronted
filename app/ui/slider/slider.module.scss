@@ -1,34 +1,6 @@
 .slider {
   @apply relative;
-  img {
-    @apply w-full  rounded-3xl;
-  }
-  .description {
-    @apply absolute bottom-0 h-32 px-7 ;
-    p {
-      @apply text-3xl font-bold;
-    }
-    > span {
-      @apply block;
-    }
-    .watch {
-      @apply py-1.5 rounded-lg;
-    }
-  }
-  .genres {
-    span {
-      @apply ml-1 ;
-    }
-  }
-  a {
-    @apply h-3;
-    &:hover {
-      @apply text-gray-300;
-    }
-    span {
-      @apply underline underline-offset-1 ml-2 transition-all duration-150;
-    }
-  }
+	
   .buttonGroup {
     @apply absolute right-0 bottom-5 px-7;
     svg {
