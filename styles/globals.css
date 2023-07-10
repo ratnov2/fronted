@@ -1,0 +1,60 @@
+
+
+/* @import '../node_modules/react-redux-toastr/src/styles/'; */
+@import '../node_modules/react-redux-toastr/lib/css/react-redux-toastr.min.css';
+@import '../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body{
+  background-color: rgba(18, 21, 23, 0.980);
+  color:white;
+}
+:root {
+	--size: 120;
+	--coefficient: 1px;
+	--timeline: 2.6s;
+	--delay: 0.65s;
+	--rotation-y: -24;
+	--rotation-x: 28;
+	--color-one: #3a0ca3;
+	--color-two: #4361ee;
+	--color-three: #4cc9f0;
+}
+
+*:after,
+*:before,
+* {
+	box-sizing: border-box;
+	transform-style: preserve-3d;
+}
+
+.slide-animation-enter {
+	opacity: 1;
+	transform: scale(1);
+}
+.slide-animation-enter-active {
+	opacity: 0;
+	transform: scale(0.8);
+	transition: opacity 400ms, transform 400ms;
+}
+.slide-animation-enter-done{
+	opacity: 0;
+	transform: scale(0.8);
+}
+.slide-animation-exit {
+	transform: scale(0.4);
+	opacity: 0;
+}
+.slide-animation-exit-active {
+	opacity: 1;
+	transform: scale(1);
+	transition: opacity 400ms, transform 400ms;
+}
+.slide-animation-exit-done {
+	opacity: 1;
+	transform: scale(1);
+}

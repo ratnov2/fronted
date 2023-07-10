@@ -1,0 +1,10 @@
+
+.input{
+  @apply relative;
+  input{
+    @apply bg-transparent rounded-3xl pl-10;
+  }
+  span{
+    @apply absolute left-2 top-2 text-3xl pointer-events-none text-gray-500
+  }
+}

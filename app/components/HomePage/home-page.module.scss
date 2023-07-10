@@ -1,0 +1,27 @@
+
+
+.trend {
+  @apply mt-10;
+  h1{
+    @apply text-xl font-bold mb-8;
+  }
+  .carousels {
+    @apply flex;
+    
+    .img{
+      @apply w-32 h-48 ml-4 first:ml-0 text-center overflow-hidden rounded-lg;
+
+  
+    img{
+        @apply table-cell align-middle
+      }
+    }
+  }
+}
+.galleryBlock{
+  @apply mt-8;
+  h1{
+    @apply text-2xl
+  }
+ 
+}
