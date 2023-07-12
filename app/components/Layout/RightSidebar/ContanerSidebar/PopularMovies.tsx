@@ -10,11 +10,11 @@ import { useGlobalProps } from 'global-props/contexts/GlobalPropsContext'
 import { GlobalProps } from 'global-props/GlobalProps'
 const PopularMovies = () => {
   const { popularMovies } = useGlobalProps()
-  console.log('@@@', popularMovies)
+  const ff = undefined
   return (
     <div className={style.movie}>
       <h1>Popular Movies</h1>
-      {popularMovies && (
+      {ff !== undefined && (
         <>
           {popularMovies.map((el) => {
             return (
