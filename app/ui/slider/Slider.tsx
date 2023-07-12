@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import MaterialIcon from 'ui/MaterialIcon'
-import style from './slider.module.scss'
+import style from './Slider.module.scss'
 import { useSliderEffect } from './useSliderEffect'
 import { CSSTransition } from 'react-transition-group'
 import SliderItem from './slider-item/SliderItem'
