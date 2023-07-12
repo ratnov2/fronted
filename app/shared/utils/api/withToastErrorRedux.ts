@@ -1,5 +1,6 @@
 import { errorCatch } from 'api/api.helpers'
-import { toastr } from 'react-redux-toastr'
+import ReduxToastr, { toastr } from 'react-redux-toastr'
+import ReduxToastrCus from 'ui/redux-toastr/ReduxToastr'
 
 export const toastError = (error: any, title?: string) => {
 	const message = errorCatch(error)

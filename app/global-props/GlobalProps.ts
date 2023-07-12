@@ -1,8 +1,10 @@
-import { $host, BASE_URL } from '@/api/api'
-import { actorsApi, movieApi } from '@/api/dataAPI'
-import { getActorUrl, getMoviesUrl } from '@/configs/url.config'
-import { IActor, IMoviePopular } from '@/shared/types/movie.types'
-import { AxiosResponse } from 'axios'
+import { BASE_URL } from '@/api/api'
+import { actorsApi, movieApi, usersApi } from '@/api/dataAPI'
+import {
+  IActor,
+  IMovieFavorite,
+  IMoviePopular,
+} from '@/shared/types/movie.types'
 import {
   GlobalPropsContextProvider,
   useGlobalProps,
@@ -19,7 +21,7 @@ export async function fetchGlobalProps(): Promise<GlobalProps> {
   const popularMovies = await movieApi.mostPopular(BASE_URL)
   const actors = await actorsApi.getAll('', BASE_URL)
   return {
-    popularMovies:popularMovies.data,
+    popularMovies: popularMovies.data,
     actors: actors.data,
   }
 }

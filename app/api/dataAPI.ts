@@ -9,7 +9,7 @@ import {
 import { IUser } from '@/shared/types/user.types'
 import Cookies from 'js-cookie'
 import { ICollection } from 'ui/collections/collections.types'
-import { $file, $host} from './api'
+import { $file, $host } from './api'
 import { getContentType } from './api.helpers'
 import { TypePostAuth, TypesUserDataPut } from './api.interface'
 
@@ -130,9 +130,9 @@ export const usersApi = {
     const response = await $host.delete(`users/${_id}`)
     return response
   },
-  async getFavoriteFilms() {
+  async getFavoriteFilms(url: string = '') {
     const response = await $host.get<IMovieFavorite[]>(
-      `users/profile/favorites`
+      `${url}/users/profile/favorites`
     )
     return response
   },
@@ -144,8 +144,10 @@ export const usersApi = {
   },
 }
 export const movieApi = {
-  async mostPopular(url:string = '') {
-    const response = await $host.get<IMoviePopular[]>(`${url}/movies/most-popular`)
+  async mostPopular(url: string = '') {
+    const response = await $host.get<IMoviePopular[]>(
+      `${url}/movies/most-popular`
+    )
     return response
   },
   async create() {
@@ -156,6 +158,10 @@ export const movieApi = {
     const response = await $host.post<IMovie[]>('movies/by-genres', {
       genreIds,
     })
+    return response
+  },
+  async getByActor(actorId?: string) {
+    const response = await $host.get<IMovie[]>(`movies/by-actor/${actorId}`)
     return response
   },
   async put(dataLog: any) {
@@ -192,7 +198,7 @@ export const movieApi = {
 }
 
 export const actorsApi = {
-  async getAll(searchTerm?: string,url:string = '') {
+  async getAll(searchTerm?: string, url: string = '') {
     const response = await $host.get<IActor[]>(`${url}/actors`, {
       params: searchTerm
         ? {
@@ -237,7 +243,6 @@ export const ratingApi = {
 }
 // export const DiscAPI = {
 //   async uploadFile(path:string,name:string,file:Blob){
-
 
 //    const link = await instance.get(`https://cloud-api.yandex.net/v1/disk/resources/upload?path=${path}/${name}`)
 //    const upload = await uploadFileInstance.put(link.data.href,file)

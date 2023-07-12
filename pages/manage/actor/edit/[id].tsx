@@ -3,7 +3,9 @@ import React from 'react'
 
 const actorEdit = () => {
   return (
-    <div><EditActor /></div>
+    <div>
+      <EditActor />
+    </div>
   )
 }
 

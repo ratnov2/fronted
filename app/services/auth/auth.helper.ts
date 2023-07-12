@@ -6,8 +6,6 @@ export const saveTokensStorage = (data:any)=>{
 }
 
 export const saveToStorage = (data:any)=>{
-  console.log(data);
-  
   saveTokensStorage(data)
   localStorage.setItem('user',JSON.stringify(data.user))
 }

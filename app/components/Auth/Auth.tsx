@@ -14,23 +14,11 @@ import { TypePostAuth } from '@/api/api.interface'
 import { useActions } from '@/hooks/useActions'
 import { useAuthState } from '@/hooks/useAuthState'
 import { useAuthRedirect } from '@/hooks/useAuthRedirect'
+import { toastr } from 'react-redux-toastr'
 
-// const schema = yup.object({
-//   email: yup.string().required(),
-//   password: yup.number().positive().integer().required(),
-// }).required();
-
-import Cookies from 'js-cookie'
-
-//const onSubmit = (data:any) => console.log(data);
 const Auth: FC = () => {
   const [auth, isAuth] = useState<'login' | 'registration'>('login')
-  const authLogin = useMutation('login', (data: TypePostAuth) =>
-    authApi.login(data)
-  )
-  const authRegister = useMutation('registration', (data: TypePostAuth) =>
-    authApi.register(data)
-  )
+
   const {
     register,
     handleSubmit,
@@ -40,12 +28,11 @@ const Auth: FC = () => {
     mode: 'onChange',
   })
   useAuthRedirect()
+  console.log('formState',errors)
   const { registerAction, loginAction } = useActions()
   const { status } = useAuthState()
 
   const onSubmit: SubmitHandler<IInputs> = (data: TypePostAuth) => {
-    console.log(auth, data)
-
     if (auth === 'login') {
       loginAction(data)
     }
@@ -68,7 +55,7 @@ const Auth: FC = () => {
             Login
           </Button>
           <Button
-            className="bg-red-200 rounded-r-lg"
+            className="bg-red-200 rounded-r-lg ml-10"
             onClick={() => isAuth('registration')}
             disabled={status}
           >

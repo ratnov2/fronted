@@ -4,7 +4,7 @@ import { createContext, useContext, ReactNode } from "react"
 // Default value for global props
 export const defaultGlobalPropsContextValue: GlobalProps = {
     popularMovies: [],
-    actors:[]
+    actors:[],
 }
 
 // Global props context

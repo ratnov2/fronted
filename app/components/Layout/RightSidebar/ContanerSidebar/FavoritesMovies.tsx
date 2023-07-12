@@ -9,33 +9,40 @@ import Link from 'next/link'
 import { useFavorites } from '@/components/favorites/useFavorites'
 const FavoriteMovies = () => {
   const { favoritesMovies, isLoading } = useFavorites()
-
   return (
     <div className={style.movie}>
-      <h1>Popular Movies</h1>
+      <h1>Favorite Movies</h1>
       {isLoading ? (
         <SkeletonLoader />
       ) : (
-        favoritesMovies &&
-        favoritesMovies.map((el) => {
-          return (
-            <Link href={`/movie/${el._id}`} className={style.item} key={el._id}>
-              <Image width={60} height={150} alt="" src={el.poster} />
-              <div>
-                <span>
-                  <h3>{el.title}</h3>
-                  <p>{el.genres.map((genre,idx)=>{
-                    return `${genre.name}${el.genres[idx+1] ? ', ': ''}`
-                  })}</p>
-                </span>
-                <Rating rating={el.rating} />
-              </div>
-            </Link>
-            
-          )
-        })
+        favoritesMovies && (
+          <>
+            {favoritesMovies.map((el) => {
+              return (
+                <Link
+                  href={`/movie/${el._id}`}
+                  className={style.item}
+                  key={el._id}
+                >
+                  <Image width={60} height={150} alt="" src={el.poster} />
+                  <div>
+                    <span>
+                      <h3>{el.title}</h3>
+                      <div className={style.genres}>
+                      {el.genres.map((el) => (
+                        <span>{el.name}</span>
+                      ))}
+                    </div>
+                    </span>
+                    <Rating rating={el.rating} />
+                  </div>
+                </Link>
+              )
+            })}
+            <Button className="mx-5 py-2 w-44">See more</Button>
+          </>
+        )
       )}
-      <Button className='mx-5 py-2 w-44' >See more</Button>
     </div>
   )
 }

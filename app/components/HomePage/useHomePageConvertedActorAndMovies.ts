@@ -17,6 +17,6 @@ export const useHomePageConvertedActorAndMovies = () => {
       subTitle:String(el.countMovies)
     }
   }))
-  
+  console.log('@##',popularMovies)
   return { popularMoviesConverted, popularActorsConverted }
 }

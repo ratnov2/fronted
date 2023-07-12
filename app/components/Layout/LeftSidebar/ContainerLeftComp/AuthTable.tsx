@@ -6,6 +6,7 @@ import style from '../leftSidebar.module.scss'
 import MaterialIcon from 'ui/MaterialIcon'
 import { IMenuItem } from '../menu.interface'
 import { useActions } from '@/hooks/useActions'
+import Button from 'ui/form-ui/button/Button'
 
 const AuthTable = () => {
   const { user } = useAuthState()
@@ -17,17 +18,17 @@ const AuthTable = () => {
       {user ? (
         <div>
           {authData.item.map((item: IMenuItem) => (
-            <Link key={item.link} href={'/'}>
+            <a key={item.link} onClick={() => logoutAction()}>
               <figure className={style.figureMenu}>
                 <MaterialIcon name={item.icon} />
                 <p>{item.title}</p>
               </figure>
-            </Link>
+            </a>
           ))}
         </div>
       ) : (
         <div>
-          <Link href={authData.login.link} onClick={() => logoutAction()}>
+          <Link href={authData.login.link} >
             <figure className={style.figureMenu}>
               <MaterialIcon name={authData.login.icon} />
               <p>{authData.login.title}</p>

@@ -7,7 +7,6 @@ import { useMutation, useQuery } from "react-query"
 
 
 export const useMoviesPage = ()=>{
-  
   const { query } = useRouter()
 
   const movie = useQuery(

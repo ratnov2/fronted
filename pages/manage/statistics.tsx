@@ -1,4 +1,5 @@
 import Statistics from '@/components/AdminPanel/Statistics/Statistics'
+import { GlobalProps } from 'global-props/GlobalProps'
 import React from 'react'
 
 const StatisticsPage = () => {
@@ -7,4 +8,7 @@ const StatisticsPage = () => {
   )
 }
 
+export const getStaticProps = GlobalProps.getStaticProps(async () => {
+  return { props: {} }
+})
 export default StatisticsPage

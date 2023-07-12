@@ -8,10 +8,10 @@ import { FC } from 'react'
 const Home: FC<any> = () => {
   return <HomePage />
 }
-
-
 export const getStaticProps = GlobalProps.getStaticProps(async () => {
   return { props: { } }
 })
+
+
 
 export default Home

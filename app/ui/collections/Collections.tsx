@@ -1,4 +1,5 @@
 import { Meta } from '@/utils/Meta'
+import { GlobalProps } from 'global-props/GlobalProps'
 import { FC } from 'react'
 import Description from 'ui/heading/Description'
 import Heading from 'ui/heading/Heading'

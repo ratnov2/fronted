@@ -1,4 +1,5 @@
 import UsersPage from '@/components/AdminPanel/UsersPage/UsersPage'
+import { GlobalProps } from 'global-props/GlobalProps'
 import React from 'react'
 
 const users = () => {
@@ -7,4 +8,7 @@ const users = () => {
   )
 }
 
+export const getStaticProps = GlobalProps.getStaticProps(async () => {
+  return { props: {} }
+})
 export default users

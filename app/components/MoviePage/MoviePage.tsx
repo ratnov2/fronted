@@ -28,6 +28,7 @@ const MoviePage = () => {
           <iframe
             width="100%"
             height="400px"
+            style={{marginTop:'30px'}}
             src={movie.data.data.videoUrl}
             title="YouTube video player"
             frameBorder="0"

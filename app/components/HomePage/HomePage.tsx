@@ -8,6 +8,7 @@ import Slider from 'ui/slider/Slider'
 const HomePage: FC<any> = () => {
   const { popularActorsConverted, popularMoviesConverted } =
     useHomePageConvertedActorAndMovies()
+    
   return (
     <div className="animate-fade">
       <Slider />
