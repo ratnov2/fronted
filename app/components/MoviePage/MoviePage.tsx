@@ -14,7 +14,7 @@ const MoviePage = () => {
   }
   return (
     <div>
-      {movie.data ? (
+      {movie.data !== undefined  ? (
         <>
           <MoviePoster
             data={movie.data.data}

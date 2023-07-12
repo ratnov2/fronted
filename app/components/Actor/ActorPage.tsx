@@ -1,3 +1,4 @@
+
 import { movieApi } from '@/api/dataAPI'
 import { useRouter } from 'next/router'
 import { useQuery } from 'react-query'
