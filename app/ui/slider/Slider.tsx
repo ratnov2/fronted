@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from 'react'
 import MaterialIcon from 'ui/MaterialIcon'
 import style from './slider.module.scss'
-import { useSliderEffect } from './useSliderEffect'
 import { CSSTransition } from 'react-transition-group'
 import SliderItem from './slider-item/SliderItem'
+import { useSliderEffect } from './useSliderEffect'
 
 const Slider = () => {
   const { handleClick, popularMoviesConverted, currentIdx, slideIn } =
@@ -12,7 +12,10 @@ const Slider = () => {
   const nodeRef = useRef(null)
 
   return (
+    
     <div className={style.slider}>
+      {popularMoviesConverted !== undefined ?
+      <>
       <CSSTransition
         nodeRef={nodeRef}
         in={slideIn}
@@ -33,8 +36,9 @@ const Slider = () => {
         <button onClick={() => handleClick('right')}>
           <MaterialIcon name="MdArrowForwardIos" />
         </button>
-      </div>
+      </div> </>:<div>loading</div>}
     </div>
+
   )
 }
 
