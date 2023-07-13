@@ -6,13 +6,13 @@ import { useHomePageConvertedActorAndMovies } from './useHomePageConvertedActorA
 import Slider from 'ui/slider/Slider'
 
 const HomePage: FC<any> = () => {
-  const { popularActorsConverted, popularMoviesConverted } =
-    useHomePageConvertedActorAndMovies()
+  // const { popularActorsConverted, popularMoviesConverted } =
+  //   useHomePageConvertedActorAndMovies()
     
   return (
     <div className="animate-fade">
       {/* <Slider /> */}
-      <div className={style.galleryBlock}>
+      {/* <div className={style.galleryBlock}>
         <h1>Trending Now</h1>
         {popularMoviesConverted.length !== 0 && (
           <Gallery items={popularMoviesConverted} />
@@ -23,7 +23,7 @@ const HomePage: FC<any> = () => {
         {popularActorsConverted.length !== 0 && (
           <Gallery items={popularActorsConverted} />
         )}
-      </div>
+      </div> */}
     </div>
   )
 }
