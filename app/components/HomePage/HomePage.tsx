@@ -11,7 +11,7 @@ const HomePage: FC<any> = () => {
     
   return (
     <div className="animate-fade">
-      <Slider />
+      {/* <Slider /> */}
       <div className={style.galleryBlock}>
         <h1>Trending Now</h1>
         {popularMoviesConverted.length !== 0 && (
