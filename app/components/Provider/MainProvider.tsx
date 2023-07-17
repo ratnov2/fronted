@@ -31,16 +31,15 @@ const MainProvider: FC<{
     <>
       <Provider store={store}>
         <QueryClientProvider client={queryClient}>
-        <ReduxToastrCus />
+          <ReduxToastrCus />
           <AuthProvider Component={Component}>
             <RouterAndFirstLoading />
             <GlobalPropsContextProvider
               globalProps={GlobalProps.extract(pageProps)}
             >
-              <Layout>{children}</Layout>
+              {children}
             </GlobalPropsContextProvider>
           </AuthProvider>
-         
         </QueryClientProvider>
       </Provider>
     </>

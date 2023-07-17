@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app'
 import '../app/assets/styles/react-select.scss'
 import MainProvider, { TypeRoles } from '@/components/Provider/MainProvider'
 import { GlobalProps } from 'global-props/GlobalProps'
+import Layout from '@/components/Layout/Layout'
 
 export interface TypeComponentAuthFields {
   Component: TypeRoles
@@ -12,7 +13,9 @@ type TypeAppProps = AppProps & TypeComponentAuthFields
 export default function App({ Component, pageProps }: TypeAppProps) {
   return (
     <MainProvider Component={Component} pageProps={pageProps}>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </MainProvider>
   )
 }

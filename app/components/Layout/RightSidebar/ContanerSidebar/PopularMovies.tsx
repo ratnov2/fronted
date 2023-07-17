@@ -10,13 +10,11 @@ import { useGlobalProps } from 'global-props/contexts/GlobalPropsContext'
 import { GlobalProps } from 'global-props/GlobalProps'
 const PopularMovies = () => {
   const { popularMovies } = useGlobalProps()
-  const ff = undefined
   return (
     <div className={style.movie}>
       <h1>Popular Movies</h1>
-      {ff !== undefined && (
         <>
-          {popularMovies.map((el) => {
+          {!!popularMovies && popularMovies.map((el) => {
             return (
               <Link
                 href={`/movie/${el._id}`}
@@ -40,7 +38,6 @@ const PopularMovies = () => {
           })}
           <Button className="mx-5 py-2 w-44">See more</Button>
         </>
-      )}
     </div>
   )
 }
