@@ -11,7 +11,7 @@ const Layout: FC<{ children: React.ReactNode }> = ({ children }) => {
       <LeftSidebar />
       <div className={style.center}>{children}</div>
       <div></div>
-      {/* <RightSidebar /> */}
+      <RightSidebar />
     </div>
   )
 }
