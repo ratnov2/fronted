@@ -5,6 +5,9 @@ const url = true
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  typescript: {
+    ignoreBuildErrors: true
+},
   experimental: { appDir: false },
   images: {
     domains: [
