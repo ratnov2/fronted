@@ -158,6 +158,10 @@ export const movieApi = {
     })
     return response
   },
+  async getByActor(actorId?: string) {
+    const response = await $host.get<IMovie[]>(`movies/by-actor/${actorId}`)
+    return response
+  },
   async put(dataLog: any) {
     const response = await $host.put<IMovie[]>(`movies/${dataLog._id}`, dataLog)
     return response
