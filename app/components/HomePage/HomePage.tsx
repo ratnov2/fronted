@@ -9,24 +9,19 @@ import Gallery from 'ui/gallery/Gallery'
 import Slider from 'ui/slider/Slider'
 
 import style from './home-page.module.scss'
+import { useHomePageConvertedActorAndMovies } from './useHomePageConvertedActorAndMovies'
 
 const HomePage: FC<any> = () => {
   const { actors, popularMovies } = useGlobalProps()
-  // const actors = useQuery('getAllActors', () => actorsApi.getAll(), {
-  //   select: ({ data }) =>
-  //     data.map((el) => ({
-  //       posterPath: el.photo,
-  //       name: el.name,
-  //       url: getActorUrl(el._id),
-  //     })),
-  // })
+  const { popularActorsConverted, popularMoviesConverted } =
+  useHomePageConvertedActorAndMovies()
 
   return (
     <div className="animate-fade">
-      {/* <Slider /> */}
+      <Slider />
       <div className={style.galleryBlock}>
         <h1>Trending Now</h1>
-        {/* <Gallery items={movies} /> */}
+        <Gallery items={popularMoviesConverted} />
         {/* {trend.data && <Gallery items={trend.data} />} */}
       </div>
       <div className={style.galleryBlock}>

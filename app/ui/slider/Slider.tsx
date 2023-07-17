@@ -1,79 +1,40 @@
-import { getGenreUrl } from '@/configs/url.config'
-import Image from 'next/image'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-import React, { useEffect } from 'react'
-import Button from 'ui/form-ui/button/Button'
+import React, { useEffect, useRef } from 'react'
 import MaterialIcon from 'ui/MaterialIcon'
 import style from './slider.module.scss'
 import { useSliderEffect } from './useSliderEffect'
+import { CSSTransition } from 'react-transition-group'
+import SliderItem from './slider-item/SliderItem'
 
 const Slider = () => {
-  const { push } = useRouter()
-  const {
-    nextIndex,
-    prevIndex,
-    currentImg,
-    dataMovie,
-    setCurrentImg,
-    setDataMovie,
-    movie,
-    currentIdx,
-  } = useSliderEffect()
+  const { handleClick, popularMoviesConverted, currentIdx, slideIn } =
+    useSliderEffect()
 
-  useEffect(() => {
-    if (movie.data) {
-      const data = movie.data.slice(0, 3)
-      setDataMovie(data)
-      setCurrentImg(data[currentIdx].bigPoster)
-    }
-  }, [movie.data])
-
-  useEffect(() => {
-    setCurrentImg(dataMovie?.[currentIdx].bigPoster)
-  }, [currentIdx])
+  const nodeRef = useRef(null)
 
   return (
-    <>
-      {dataMovie && currentImg && (
-        <div className={style.slider}>
-          {<Image src={currentImg} width={1231} height={399} alt="" />}
-          <div className={style.description}>
-            <p>{dataMovie[currentIdx].title}</p>
-            <span className={style.genres}>
-              {dataMovie[currentIdx].genres.length ? (
-                dataMovie[currentIdx].genres.map((el, idx) => {
-                  return (
-                    <Link key={el._id} href={getGenreUrl(el.slug)}>
-                      <span>
-                        {el.name}
-                        {dataMovie[currentIdx].genres[idx + 1] ? ',' : ''}
-                      </span>
-                    </Link>
-                  )
-                })
-              ) : (
-                <span>Not a Genre</span>
-              )}
-            </span>
-            <Button
-              className={style.watch}
-              onClick={() => push(`movie/${dataMovie[currentIdx]._id}` || '')}
-            >
-              Watch
-            </Button>
-          </div>
-          <div className={style.buttonGroup}>
-            <button onClick={() => prevIndex()}>
-              <MaterialIcon name="MdArrowBackIos" />
-            </button>
-            <button onClick={() => nextIndex()}>
-              <MaterialIcon name="MdArrowForwardIos" />
-            </button>
-          </div>
+    <div className={style.slider}>
+      <CSSTransition
+        nodeRef={nodeRef}
+        in={slideIn}
+        timeout={300}
+        classNames="slide-animation"
+      >
+        <div ref={nodeRef}>
+          <SliderItem
+            currentImg={popularMoviesConverted[currentIdx].bigPoster}
+            movie={popularMoviesConverted[currentIdx]}
+          />
         </div>
-      )}
-    </>
+      </CSSTransition>
+      <div className={style.buttonGroup}>
+        <button onClick={() => handleClick('left')}>
+          <MaterialIcon name="MdArrowBackIos" />
+        </button>
+        <button onClick={() => handleClick('right')}>
+          <MaterialIcon name="MdArrowForwardIos" />
+        </button>
+      </div>
+    </div>
   )
 }
 

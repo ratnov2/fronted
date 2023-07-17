@@ -1,4 +1,5 @@
 import '../styles/globals.css' //
+import '../app/assets/styles/react-select.scss'
 import type { AppProps } from 'next/app'
 import '../app/assets/styles/react-select.scss'
 import MainProvider, { TypeRoles } from '@/components/Provider/MainProvider'
