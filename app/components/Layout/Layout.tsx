@@ -15,7 +15,7 @@ const Layout: FC<{ children: React.ReactNode }> = ({ children }) => {
     </div>
   )
 }
-// export const getStaticProps = GlobalProps.getStaticProps(async () => {
-//   return { props: {}}
-// })
+export const getStaticProps = GlobalProps.getStaticProps(async () => {
+  return { props: {}}
+})
 export default Layout
