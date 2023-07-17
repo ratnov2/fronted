@@ -10,11 +10,12 @@ const Layout: FC<{ children: React.ReactNode }> = ({ children }) => {
     <div className={style.layout}>
       <LeftSidebar />
       <div className={style.center}>{children}</div>
-      <RightSidebar />
+      <div></div>
+      {/* <RightSidebar /> */}
     </div>
   )
 }
-export const getStaticProps = GlobalProps.getStaticProps(async () => {
-  return { props: {}}
-})
+// export const getStaticProps = GlobalProps.getStaticProps(async () => {
+//   return { props: {}}
+// })
 export default Layout

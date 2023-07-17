@@ -17,7 +17,7 @@ export default function App({ Component, pageProps, children }: TypeAppProps) {
   return (
     <MainProvider Component={Component}>
       <GlobalPropsContextProvider globalProps={GlobalProps.extract(pageProps)}>
-          <Component {...pageProps} />
+          <Layout><Component {...pageProps} /></Layout>
       </GlobalPropsContextProvider>
     </MainProvider>
   )
