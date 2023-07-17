@@ -5,9 +5,9 @@ import Rating from 'ui/rating/Rating'
 import Search from 'ui/serch/Search'
 import style from '../RightSidebar.module.scss'
 import { useCustomSearch } from './useCustomSearch'
+
 const CustomSearch = () => {
-  const { allMovies, isValue, value } =
-    useCustomSearch()
+  const { allMovies, isValue, value } = useCustomSearch()
   return (
     <div className={style.customSearch}>
       <Search
@@ -16,7 +16,7 @@ const CustomSearch = () => {
         className1="mt-10 ml-5"
         className2="w-48 "
       />
-      {/* {value !== '' && allMovies.isSuccess && (
+      {value !== '' && allMovies.isSuccess && (
         <div className={style.list}>
           {allMovies.data?.length ? (
             allMovies.data?.map((movie) => (
@@ -37,7 +37,7 @@ const CustomSearch = () => {
             <div className="text-white text-center my-4">Movies not found!</div>
           )}
         </div>
-      )} */}
+      )}
     </div>
   )
 }
