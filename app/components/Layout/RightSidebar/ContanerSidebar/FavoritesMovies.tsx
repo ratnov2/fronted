@@ -1,6 +1,6 @@
 import React from 'react'
 import SkeletonLoader from 'ui/skeleton-loader/SkeletonLoader'
-import style from '../RightSidebar.module.scss'
+
 import Image from 'next/image'
 import Rating from 'ui/rating/Rating'
 import Button from 'ui/form-ui/button/Button'
