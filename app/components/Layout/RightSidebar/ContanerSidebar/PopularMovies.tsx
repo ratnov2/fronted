@@ -13,7 +13,7 @@ const PopularMovies = () => {
     <div className={style.movie}>
       <h1>Popular Movies</h1>
         <>
-          {popularMovies.map((el) => {
+          {!!popularMovies && popularMovies.map((el) => {
             return (
               <MiniMovieCard
               genres={el.genres}
