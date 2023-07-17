@@ -6,9 +6,10 @@ import Rating from 'ui/rating/Rating'
 import Button from 'ui/form-ui/button/Button'
 import Link from 'next/link'
 import { useFavorites } from '@/components/favorites/useFavorites'
+import { useRouter } from 'next/router'
 const FavoriteMovies = () => {
   const { favoritesMovies, isLoading } = useFavorites()
-
+  const { push } = useRouter()
   return (
     <div className={style.movie}>
       <h1>Favorite Movies</h1>
@@ -35,7 +36,12 @@ const FavoriteMovies = () => {
           )
         })
       )}
-      <Button className="mx-5 py-2 w-44">See more</Button>
+      <Button
+        onClick={() => push('favorite-movies')}
+        className="mx-5 py-2 w-44"
+      >
+        See more
+      </Button>
     </div>
   )
 }

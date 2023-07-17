@@ -7,27 +7,35 @@ import Link from 'next/link'
 import { useGlobalProps } from 'global-props/contexts/GlobalPropsContext'
 import { GlobalProps } from 'global-props/GlobalProps'
 import MiniMovieCard from './ui/MiniMovieCard'
+import { useRouter } from 'next/router'
 const PopularMovies = () => {
+  const { push } = useRouter()
   const { popularMovies } = useGlobalProps()
   return (
     <div className={style.movie}>
       <h1>Popular Movies</h1>
-        <>
-          {!!popularMovies && popularMovies.map((el) => {
+      <>
+        {!!popularMovies &&
+          popularMovies.map((el) => {
             return (
               <MiniMovieCard
-              genres={el.genres}
-              id={el._id}
-              poster={el.poster}
-              rating={el.rating}
-              title={el.title} />
+                genres={el.genres}
+                id={el._id}
+                poster={el.poster}
+                rating={el.rating}
+                title={el.title}
+              />
             )
           })}
-          <Button className="mx-5 py-2 w-44">See more</Button>
-        </>
+        <Button
+          onClick={() => push('all-popular-movies')}
+          className="mx-5 py-2 w-44"
+        >
+          See more
+        </Button>
+      </>
     </div>
   )
 }
-
 
 export default PopularMovies

@@ -1,6 +1,5 @@
 import TrendingNowPage from '@/components/TrendingNow/TrendingNowPage'
 import { GlobalProps } from 'global-props/GlobalProps'
-import { useGlobalProps } from 'global-props/contexts/GlobalPropsContext'
 import React from 'react'
 
 const trendMovies = () => {

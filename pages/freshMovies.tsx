@@ -10,6 +10,7 @@ const freshMoviesPage = () => {
   )
 }
 
+
 export const getStaticProps = GlobalProps.getStaticProps(async () => {
   return { props: {}, fallback: false }
 })
