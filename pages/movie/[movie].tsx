@@ -2,11 +2,7 @@ import MoviePage from '@/components/MoviePage/MoviePage'
 import React from 'react'
 
 const movie = () => {
-  return (
-    <div>
-      <MoviePage />
-    </div>
-  )
+  return <MoviePage />
 }
 
 export default movie

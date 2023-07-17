@@ -11,7 +11,7 @@ const FavoriteMovies = () => {
 
   return (
     <div className={style.movie}>
-      <h1>Popular Movies</h1>
+      <h1>Favorite Movies</h1>
       {isLoading ? (
         <SkeletonLoader />
       ) : (
