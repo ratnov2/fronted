@@ -13,12 +13,16 @@ const ActorPage = () => {
       enabled: !!query.id,
     }
   )
-  return <div>
-    {movies.data?.data && <Catalog
+  return (
+    <div>
+      {movies.data?.data && (
+        <Catalog
           movies={movies.data.data || []}
           title="Movies"
           description="Movies by actor"
-        />}
-  </div>
+        />
+      )}
+    </div>
+  )
 }
 export default ActorPage

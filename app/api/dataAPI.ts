@@ -37,8 +37,8 @@ export const genresApi = {
   async getCollections() {
     return $host.get<ICollection[]>('genres/collections')
   },
-  async getBySlug(slug: string) {
-    const response = await $host.get<IGenre>(`genres/by-slug/${slug}`)
+  async getBySlug(slug: string,url:string = '') {
+    const response = await $host.get<IGenre>(`${url}/genres/by-slug/${slug}`)
     return response
   },
   async delete(_id: string) {
@@ -61,8 +61,8 @@ export const genresApi = {
     const response = await $host.post<IGenre>(`genres/`)
     return response
   },
-  async getByGenres(genreIds: string[]) {
-    const response = $host.post<IMovie[]>(`movies/by-genres`, {
+  async getByGenres(genreIds: string[],url='') {
+    const response = $host.post<IMovie[]>(`${url}/movies/by-genres`, {
       genreIds,
     })
     return response

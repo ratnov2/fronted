@@ -4,8 +4,6 @@ import { useGlobalProps } from 'global-props/contexts/GlobalPropsContext'
 import React from 'react'
 
 const trendMovies = () => {
-  const { popularMovies} =  useGlobalProps()
-  
   return (
     <div>
       <TrendingNowPage />
@@ -13,6 +11,6 @@ const trendMovies = () => {
   )
 }
 export const getStaticProps = GlobalProps.getStaticProps(async () => {
-  return { props: {},fallback: false }
+  return { props: {}, fallback: false }
 })
 export default trendMovies
