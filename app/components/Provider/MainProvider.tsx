@@ -10,7 +10,6 @@ import RouterAndFirstLoading from 'ui/router-and-first-loading/RouterAndFirstLoa
 import { GlobalPropsContextProvider } from 'global-props/contexts/GlobalPropsContext'
 import { GlobalProps } from 'global-props/GlobalProps'
 import { AppProps } from 'next/app'
-import ReduxToastr from 'react-redux-toastr'
 
 export type TypeRoles = { isOnlyAdmin?: boolean; isOnlyUser?: boolean }
 
@@ -25,25 +24,20 @@ const queryClient = new QueryClient({
 const MainProvider: FC<{
   children: React.ReactNode
   Component: TypeRoles
-  pageProps: AppProps
-}> = ({ children, Component, pageProps }) => {
+}> = ({ children, Component }) => {
   return (
     <>
       <Provider store={store}>
         <QueryClientProvider client={queryClient}>
-        <ReduxToastrCus />
+          <ReduxToastrCus />
           <AuthProvider Component={Component}>
-            <RouterAndFirstLoading />
-            <GlobalPropsContextProvider
-              globalProps={GlobalProps.extract(pageProps)}
-            >
-              <Layout>{children}</Layout>
-            </GlobalPropsContextProvider>
+            {/* <RouterAndFirstLoading /> */}
+            <Layout>{children}</Layout>
           </AuthProvider>
-         
         </QueryClientProvider>
       </Provider>
     </>
   )
 }
+
 export default MainProvider
