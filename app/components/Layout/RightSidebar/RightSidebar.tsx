@@ -12,7 +12,7 @@ const RightSidebar:FC = ()=>{
     return(
        <div >
           <CustomSearch />
-          {/* <PopularMovies /> */}
+          <PopularMovies />
           {user && <FavoriteMovies />}
        </div>
     )
