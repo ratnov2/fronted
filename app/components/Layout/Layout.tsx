@@ -7,8 +7,7 @@ import { useGlobalProps } from 'global-props/contexts/GlobalPropsContext'
 
 const Layout: FC<{ children: React.ReactNode }> = ({ children }) => {
   const {popularMovies} = useGlobalProps()
-  console.log('@RREF',popularMovies);
-  
+
   return (
     <div className={style.layout}>
       <LeftSidebar />
@@ -18,6 +17,6 @@ const Layout: FC<{ children: React.ReactNode }> = ({ children }) => {
   )
 }
 export const getStaticProps = GlobalProps.getStaticProps(async () => {
-  return { props: {} }
+  return { props: {},fallback: false }
 })
 export default Layout

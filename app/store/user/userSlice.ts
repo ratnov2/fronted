@@ -41,7 +41,6 @@ export const counterSlice = createSlice({
       })
       .addCase(loginAction.fulfilled,(state, {payload})=>{
         state.status = false
-        console.log(payload);
         state.user = payload.user 
       })
       .addCase(loginAction.rejected,(state, actions)=>{

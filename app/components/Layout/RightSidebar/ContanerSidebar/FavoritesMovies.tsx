@@ -1,7 +1,6 @@
 import React from 'react'
 import SkeletonLoader from 'ui/skeleton-loader/SkeletonLoader'
-import { useReqRightSidebar } from './useReqRightSidebar'
-import style from '../rightSidebar.module.scss'
+import style from '../RightSidebar.module.scss'
 import Image from 'next/image'
 import Rating from 'ui/rating/Rating'
 import Button from 'ui/form-ui/button/Button'
@@ -22,14 +21,16 @@ const FavoriteMovies = () => {
             <Link href={`/movie/${el._id}`} className={style.item} key={el._id}>
               <Image width={60} height={150} alt="" src={el.poster} />
               <div>
-                <span>
-                  <h3>{el.title}</h3>
-                  <p>{el.genres.map((genre,idx)=>{
-                    return `${genre.name}${el.genres[idx+1] ? ', ': ''}`
-                  })}</p>
-                </span>
-                <Rating rating={el.rating} />
-              </div>
+                  <span>
+                    <h3>{el.title}</h3>
+                    <div className={style.genres}>
+                      {el.genres.map((el) => (
+                        <span>{el.name}</span>
+                      ))}
+                    </div>
+                  </span>
+                  <Rating rating={el.rating} />
+                </div>
             </Link>
             
           )

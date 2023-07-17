@@ -28,7 +28,6 @@ const Auth: FC = () => {
     mode: 'onChange',
   })
   useAuthRedirect()
-  console.log('formState',errors)
   const { registerAction, loginAction } = useActions()
   const { status } = useAuthState()
 

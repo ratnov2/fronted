@@ -3,7 +3,7 @@ import Link from 'next/link'
 import React from 'react'
 import Rating from 'ui/rating/Rating'
 import Search from 'ui/serch/Search'
-import style from '../rightSidebar.module.scss'
+import style from '../RightSidebar.module.scss'
 import { useCustomSearch } from './useCustomSearch'
 const CustomSearch = () => {
   const { allMovies, isValue, value } =

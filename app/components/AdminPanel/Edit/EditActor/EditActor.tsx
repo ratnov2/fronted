@@ -44,7 +44,6 @@ const EditActor = () => {
     }
   )
   const onSubmit = (dataLog: IInputActor) => {
-    console.log(dataLog)
     if (dataLog.photo === photo) {
       let data2 = { ...dataLog, _id: id }
       return mutate(data2)

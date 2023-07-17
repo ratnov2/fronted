@@ -6,14 +6,11 @@ import { FC } from 'react'
 //type PageProps = InferGetStaticPropsType<typeof getStaticProps>
 
 const Home: FC = () => {
-  const { popularMovies } = useGlobalProps()
-  console.log('@#@#@#@#',popularMovies);
-  
   return <HomePage />
 }
 
 export const getStaticProps = GlobalProps.getStaticProps(async () => {
-  return { props: { } }
+  return { props: {},fallback: false }
 })
 
 export default Home

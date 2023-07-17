@@ -5,7 +5,6 @@ import React from 'react'
 
 const trendMovies = () => {
   const { popularMovies} =  useGlobalProps()
-  console.log('trend',popularMovies);
   
   return (
     <div>
@@ -14,6 +13,6 @@ const trendMovies = () => {
   )
 }
 export const getStaticProps = GlobalProps.getStaticProps(async () => {
-  return { props: { } }
+  return { props: {},fallback: false }
 })
 export default trendMovies
