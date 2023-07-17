@@ -32,7 +32,7 @@ const MainProvider: FC<{
           <ReduxToastrCus />
           <AuthProvider Component={Component}>
             {/* <RouterAndFirstLoading /> */}
-            <Layout>{children}</Layout>
+           {children}
           </AuthProvider>
         </QueryClientProvider>
       </Provider>
