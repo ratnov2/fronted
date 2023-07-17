@@ -29,7 +29,7 @@ const PopularMovies = () => {
   )
 }
 export const getStaticProps = GlobalProps.getStaticProps(async () => {
-  return { props: {},fallback: false }
+  return { props: {}}
 })
 
 export default PopularMovies
