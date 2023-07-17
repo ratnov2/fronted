@@ -30,7 +30,7 @@ const GalleryItem: FC<IGalleryItemProps> = ({ item, variant }) => {
         <div className={styles.content}>
           <div className={styles.title}>{item.content.title}</div>
           {item.content.subTitle && (
-            <div className={styles.subTitle}> {item.content.subTitle}</div>
+           <div className={styles.subTitle}>+ {item.content.subTitle} movies</div>
           )}
         </div>
       )}

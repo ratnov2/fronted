@@ -3,6 +3,7 @@ import { useGlobalProps } from 'global-props/contexts/GlobalPropsContext'
 
 export const useHomePageConvertedActorAndMovies = () => {
   const { actors, popularMovies } = useGlobalProps()
+  console.log(actors)
   const popularMoviesConverted = popularMovies.map((el) => ({
     posterPath: el.poster,
     name: el.title,
@@ -17,6 +18,6 @@ export const useHomePageConvertedActorAndMovies = () => {
       subTitle:String(el.countMovies)
     }
   }))
-  console.log('@##',popularMovies)
+
   return { popularMoviesConverted, popularActorsConverted }
 }

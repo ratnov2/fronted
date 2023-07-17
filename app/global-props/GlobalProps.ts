@@ -18,14 +18,9 @@ export type GlobalProps = {
 export async function fetchGlobalProps(): Promise<GlobalProps> {
   const moviesPopular = await movieApi.mostPopular(BASE_URL)
   const actors = await actorsApi.getAll('', BASE_URL)
-  const actorsConverted = actors.data.map((el) => ({
-    posterPath: el.photo,
-    name: el.name,
-    url: getActorUrl(el._id),
-  }))
   return {
     popularMovies: moviesPopular.data,
-    actors: actorsConverted as any,
+    actors: actors.data,
   }
 }
 export const GlobalProps = {
