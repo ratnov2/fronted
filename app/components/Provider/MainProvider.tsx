@@ -1,6 +1,5 @@
-import { createContext, Dispatch, FC, SetStateAction, useState } from 'react'
+import { FC } from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
-// import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import Layout from '../Layout/Layout'
 import { Provider } from 'react-redux'
 import store from '@/store/store'
@@ -24,20 +23,25 @@ const queryClient = new QueryClient({
 const MainProvider: FC<{
   children: React.ReactNode
   Component: TypeRoles
-}> = ({ children, Component }) => {
+  pageProps: AppProps
+}> = ({ children, Component, pageProps }) => {
   return (
     <>
       <Provider store={store}>
-          <QueryClientProvider client={queryClient}>
-            <ReduxToastrCus />
-            <AuthProvider Component={Component}>
-              {/* <RouterAndFirstLoading /> */}
+        <QueryClientProvider client={queryClient}>
+        <ReduxToastrCus />
+          <AuthProvider Component={Component}>
+            <RouterAndFirstLoading />
+            <GlobalPropsContextProvider
+              globalProps={GlobalProps.extract(pageProps)}
+            >
               <Layout>{children}</Layout>
-            </AuthProvider>
-          </QueryClientProvider>
+            </GlobalPropsContextProvider>
+          </AuthProvider>
+         
+        </QueryClientProvider>
       </Provider>
     </>
   )
 }
-
 export default MainProvider
