@@ -10,6 +10,6 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps = GlobalProps.getStaticProps(async () => {
-  return { props: { movie: '' } }
+  return { props: {} }
 })
 export default Actor

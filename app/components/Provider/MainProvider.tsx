@@ -28,17 +28,16 @@ const MainProvider: FC<{
   return (
     <>
       <Provider store={store}>
-        
           <QueryClientProvider client={queryClient}>
             <ReduxToastrCus />
             <AuthProvider Component={Component}>
-              <RouterAndFirstLoading />
+              {/* <RouterAndFirstLoading /> */}
               <Layout>{children}</Layout>
             </AuthProvider>
           </QueryClientProvider>
-        
       </Provider>
     </>
   )
 }
+
 export default MainProvider

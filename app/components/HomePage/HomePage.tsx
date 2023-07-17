@@ -26,4 +26,5 @@ const HomePage: FC<any> = () => {
     </div>
   )
 }
+
 export default HomePage

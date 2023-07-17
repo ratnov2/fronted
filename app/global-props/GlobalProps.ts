@@ -16,10 +16,10 @@ export type GlobalProps = {
 }
 
 export async function fetchGlobalProps(): Promise<GlobalProps> {
-  const moviesPopular = await movieApi.mostPopular(BASE_URL)
+  const popularMovies = await movieApi.mostPopular(BASE_URL)
   const actors = await actorsApi.getAll('', BASE_URL)
   return {
-    popularMovies: moviesPopular.data,
+    popularMovies: popularMovies.data,
     actors: actors.data,
   }
 }

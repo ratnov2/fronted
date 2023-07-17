@@ -2,8 +2,13 @@ import React, { FC } from 'react'
 import LeftSidebar from './LeftSidebar/LeftSidebar'
 import RightSidebar from './RightSidebar/RightSidebar'
 import style from './layout.module.scss'
+import { GlobalProps } from 'global-props/GlobalProps'
+import { useGlobalProps } from 'global-props/contexts/GlobalPropsContext'
 
 const Layout: FC<{ children: React.ReactNode }> = ({ children }) => {
+  const {popularMovies} = useGlobalProps()
+  console.log('@RREF',popularMovies);
+  
   return (
     <div className={style.layout}>
       <LeftSidebar />
@@ -12,4 +17,7 @@ const Layout: FC<{ children: React.ReactNode }> = ({ children }) => {
     </div>
   )
 }
+export const getStaticProps = GlobalProps.getStaticProps(async () => {
+  return { props: {} }
+})
 export default Layout

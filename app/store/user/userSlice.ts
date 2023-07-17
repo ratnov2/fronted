@@ -1,7 +1,7 @@
 import { authApi } from '@/api/dataAPI'
 import { createSlice } from '@reduxjs/toolkit'
 import { checkAuth, loginAction, logoutAction, registerAction } from './user.actions'
-// import type { PayloadAction } from '@reduxjs/toolkit'
+import { removeTokensStorage } from '@/services/auth/auth.helper'
 
 export interface TypesUserState {
   user: {
@@ -49,6 +49,7 @@ export const counterSlice = createSlice({
       })
       .addCase(logoutAction.fulfilled,(state, actions)=>{
         state.user = null
+        removeTokensStorage()
       }).addCase(checkAuth.fulfilled, (state, { payload }) => {
 				state.user = payload.user
 			})

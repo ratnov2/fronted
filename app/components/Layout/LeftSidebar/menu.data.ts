@@ -30,10 +30,6 @@ export const authData:IMenuGeneral = {
   name:'General',
   item:[{
     icon:'MdRefresh',
-    link:'/profile',
-    title:'Profile'
-  },{
-    icon:'MdRefresh',
     link:'/',
     title:'Logout'
   }

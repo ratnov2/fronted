@@ -24,4 +24,5 @@ const LeftSidebar: FC = () => {
     </div>
   )
 }
+
 export default LeftSidebar
