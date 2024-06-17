@@ -33,7 +33,7 @@ const MainProvider: FC<{
         <QueryClientProvider client={queryClient}>
         <ReduxToastrCus />
           <AuthProvider Component={Component}>
-            <RouterAndFirstLoading />
+            {/* <RouterAndFirstLoading /> */}
             <GlobalPropsContextProvider
               globalProps={GlobalProps.extract(pageProps)}
             >
