@@ -5,10 +5,10 @@ import style from './home-page.module.scss'
 import { useHomePageConvertedActorAndMovies } from './useHomePageConvertedActorAndMovies'
 import Slider from 'ui/slider/Slider'
 
-const HomePage: FC<any> = () => {
+const HomePage = () => {
   const { popularActorsConverted, popularMoviesConverted } =
     useHomePageConvertedActorAndMovies()
-    
+
   return (
     <div className="animate-fade">
       <Slider />

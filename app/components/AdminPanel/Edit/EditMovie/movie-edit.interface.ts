@@ -33,7 +33,7 @@ export interface IInputMovie {
     duration: number
     year: number
   }
-  bigPoster: string | Blob
+  bigPoster: string
   poster: string
   videoUrl: string
 }

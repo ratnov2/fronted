@@ -3,6 +3,7 @@ import { Controller } from 'react-hook-form'
 import FileUpload from 'ui/file-upload/FileUpload'
 import Field from 'ui/form-ui/Field/Field'
 import { TypesScopeFieldActor } from '../actor-edit.interface'
+import { validURL } from '@/utils/valid-url/valid-url'
 
 const FieldScope: FC<TypesScopeFieldActor> = ({
   register,
@@ -11,7 +12,7 @@ const FieldScope: FC<TypesScopeFieldActor> = ({
   control,
 }) => {
   return (
-    <>
+    <div>
       <div className="flex">
         <Field
           {...register('name', {
@@ -48,20 +49,27 @@ const FieldScope: FC<TypesScopeFieldActor> = ({
           </div>
         </div>
       </div>
-      <Controller
-        control={control}
-        name="photo"
-        defaultValue=""
-        render={({ field: { value, onChange }, fieldState: { error } }) => (
-          <FileUpload
-            onChange={onChange}
-            value={value}
-            error={error}
-            placeholder=""
-          />
-        )}
+      <Field
+        {...register('photo', {
+          required: true,
+          validate: (string) => validURL(string),
+        })}
+        type="text"
+        textLabel="Photo"
+        sharedStyle=""
+        error={errors.photo?.message}
       />
-    </>
+    </div>
   )
 }
 export default FieldScope
+function isValidHttpUrl(string: string) {
+  let url
+  try {
+    url = new URL(string)
+  } catch (_) {
+    return 'Uncorrect url format'
+  }
+
+  return url.protocol === 'http:' || url.protocol === 'https:'
+}

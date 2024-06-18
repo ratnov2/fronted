@@ -12,6 +12,7 @@ import { ICollection } from 'ui/collections/collections.types'
 import { $file, $host } from './api'
 import { getContentType } from './api.helpers'
 import { TypePostAuth, TypesUserDataPut } from './api.interface'
+import { IInputActor } from '@/components/AdminPanel/Edit/EditActor/actor-edit.interface'
 
 export const genresApi = {
   async getAll(searchTerm?: string) {
@@ -220,7 +221,7 @@ export const actorsApi = {
     const response = await $host.post(`actors/`)
     return response
   },
-  async putId(data: IActor) {
+  async putId(data: IInputActor) {
     const response = await $host.put(`actors/${data._id}`, data)
     return response
   },

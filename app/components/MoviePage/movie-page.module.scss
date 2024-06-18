@@ -1,75 +1,72 @@
+.BigPoster {
+  @apply relative;
 
-
-.BigPoster{
-  @apply  relative;
-
-  img{
+  img {
     @apply rounded-xl;
   }
-  .description{
+
+  .description {
     @apply absolute bottom-3 px-4;
 
-    h1{
-      @apply text-3xl font-bold
+    h1 {
+      @apply text-3xl font-bold;
     }
-    .parameters{
-      @apply  text-gray-300 font-medium 
+    .parameters {
+      @apply text-gray-300 font-medium;
     }
-    .ArrayType{
-      @apply font-medium ;
+    .ArrayType {
+      @apply font-medium;
 
-      >span{
-        @apply  text-gray-500
+      > span {
+        @apply text-gray-500;
       }
       a {
         @apply h-3;
-        &:hover{
-          @apply  text-gray-300
+        &:hover {
+          @apply text-gray-300;
         }
-        span{
+        span {
           @apply underline underline-offset-1 ml-2 transition-all duration-150;
         }
       }
     }
   }
-  .favorites{
+  .favorites {
     @apply absolute right-10 bottom-5;
     // &:first-child svg{
-    //   @apply text-primary 
+    //   @apply text-primary
     // }
     // span:first-child svg{
     //   @apply  text-red-200
     // }
-    span:first-child{
+    span:first-child {
       @apply absolute -right-7 -bottom-14;
     }
-   span:last-child svg{
-      @apply  text-yellow-700
+    span:last-child svg {
+      @apply text-yellow-700;
     }
-    span:last-child{
+    span:last-child {
       @apply flex;
-      span{
-        @apply font-medium text-2xl
+      span {
+        @apply font-medium text-2xl;
       }
-      
     }
-    svg{
-      @apply text-3xl 
+    svg {
+      @apply text-3xl;
     }
-    
   }
 }
-.rating{
+.rating {
   @apply w-80 m-auto mt-8 text-center bg-gray-950 py-8 px-4 rounded-2xl;
 
-  h1{
-    @apply text-xl font-bold
+  h1 {
+    @apply text-xl font-bold;
   }
-  p{
-    @apply text-gray-600
+  p {
+    @apply text-gray-600;
   }
-  >div {
-   @apply mt-2 h-8
+  > div {
+    @apply mt-2 h-8;
   }
 }
 

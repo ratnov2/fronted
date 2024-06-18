@@ -16,6 +16,7 @@ export const useMoviesPage = ()=>{
       enabled: (!!query.movie),
     }
   )
+  
   useEffect(()=>{
     if(movie.isSuccess) movie.refetch()
   },[query])

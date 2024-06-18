@@ -7,11 +7,15 @@ const nextConfig = {
   swcMinify: true,
   experimental: { appDir: false },
   images: {
-    domains: [
-      'test2-ratnov2.vercel.app',
-      'i.postimg.cc',
-      'downloader.disk.yandex.ru',
-      'www.youtube.com'
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+      {
+        protocol: 'http',
+        hostname: '**',
+      },
     ],
   },
   // async rewrites() {

@@ -12,7 +12,7 @@ export const $host = axios.create({
 
 $host.interceptors.request.use(
   (config) => {
-    const token = Cookies.get('accessToken')
+    const token = Cookies.get('accessToken') 
     if (token) {
       config.headers['Authorization'] = 'Bearer ' + token
     }

@@ -6,13 +6,13 @@ import React, { FC } from 'react'
 import Button from 'ui/form-ui/button/Button'
 import { ISliderItem } from './slider-item.interface'
 import style from './SliderItem.module.scss'
+import { ImgWithLoader } from 'ui/img-with-loader/ImgWithLoader'
 
-const SliderItem:FC<ISliderItem> = ({movie,currentImg}) => {
-  const {push} = useRouter()
+const SliderItem: FC<ISliderItem> = ({ movie, currentImg }) => {
+  const { push } = useRouter()
   return (
     <div className={style.sliderItem}>
-      <Image  className={style.img} src={currentImg} width={1231} height={399} alt="" />
-      <div className={style.share} />
+      <ImgWithLoader img={currentImg} className="h-[400px] w-full" />
       <div className={style.description}>
         <p>{movie.title}</p>
         <span className={style.genres}>

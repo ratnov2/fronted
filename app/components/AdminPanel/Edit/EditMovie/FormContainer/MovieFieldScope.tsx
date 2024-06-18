@@ -5,8 +5,9 @@ import FileUpload from 'ui/file-upload/FileUpload'
 import VideoUpload from 'ui/file-upload/VideoUpload'
 import Field from 'ui/form-ui/Field/Field'
 import { TypesScopeFieldMovie } from '../movie-edit.interface'
-
 import style from '../movie-edit.module.scss'
+import { validURL } from '@/utils/valid-url/valid-url'
+
 const DynamicSelect = dynamic(() => import('ui/select-div/SelectDif'), {
   ssr: false,
 })
@@ -79,7 +80,15 @@ const MovieFieldScope: FC<TypesScopeFieldMovie> = ({
             required: true,
             minLength: {
               value: 1,
-              message: 'name have to be more 1 characters',
+              message: 'year have to be more 1 characters',
+            },
+            maxLength: {
+              value: 4,
+              message: 'year have to be less 5 characters',
+            },
+            pattern: {
+              value: /^[0-9]+$/,
+              message: 'Please enter a number',
             },
           })}
           type="text"
@@ -92,13 +101,53 @@ const MovieFieldScope: FC<TypesScopeFieldMovie> = ({
             required: true,
             minLength: {
               value: 1,
-              message: 'name have to be more 1 characters',
+              message: 'year have to be more 1 characters',
+            },
+            maxLength: {
+              value: 4,
+              message: 'year have to be less 5 characters',
+            },
+            pattern: {
+              value: /^[0-9]+$/,
+              message: 'Please enter a number',
             },
           })}
           type="text"
           textLabel="year"
           sharedStyle="w-1/3 ml-6"
           error={errors.parameters?.year?.message}
+        />
+      </div>{' '}
+      <div>
+        <Field
+          {...register('videoUrl', {
+            required: true,
+            validate: (string) => validURL(string),
+          })}
+          type="text"
+          textLabel="videoUrl"
+          sharedStyle=""
+          error={errors.videoUrl?.message}
+        />
+        <Field
+          {...register('poster', {
+            required: true,
+            validate: (string) => validURL(string),
+          })}
+          type="text"
+          textLabel="poster"
+          sharedStyle=""
+          error={errors.poster?.message}
+        />
+        <Field
+          {...register('bigPoster', {
+            required: true,
+            validate: (string) => validURL(string),
+          })}
+          type="text"
+          textLabel="big Poster"
+          sharedStyle=""
+          error={errors.bigPoster?.message}
         />
       </div>
       <div className={style.select}>
@@ -131,38 +180,6 @@ const MovieFieldScope: FC<TypesScopeFieldMovie> = ({
           }}
         />
       </div>
-      <div>
-        <Controller
-          control={control}
-          name="bigPoster"
-          defaultValue=""
-          render={({ field: { value, onChange }, fieldState: { error } }) => (
-            <FileUpload onChange={onChange} value={value} error={error} />
-          )}
-        />
-        <Controller
-          control={control}
-          name="poster"
-          defaultValue=""
-          render={({ field: { value, onChange }, fieldState: { error } }) => (
-            <FileUpload onChange={onChange} value={value} error={error} />
-          )}
-        />
-      </div>
-      <Controller
-        control={control}
-        name="videoUrl"
-        defaultValue=""
-        render={({ field: { value, onChange }, fieldState: { error } }) => (
-          <VideoUpload
-            onChange={onChange}
-            value={value}
-            error={error}
-            classNameShare="block mt-20"
-            classNameVideo="w-full h-full rounded-2xl"
-          />
-        )}
-      />
     </>
   )
 }
