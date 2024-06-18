@@ -7,9 +7,14 @@ import cl from 'classnames'
 interface IImgWithLoader {
   img?: string
   className: string
+  type?: 'ordinary' | 'popular'
 }
 
-export const ImgWithLoader: FC<IImgWithLoader> = ({ img, className }) => {
+export const ImgWithLoader: FC<IImgWithLoader> = ({
+  img,
+  className,
+  type = 'ordinary',
+}) => {
   const [isLoading, setIsLoading] = useState(true)
   return (
     <div className={className}>
@@ -17,7 +22,7 @@ export const ImgWithLoader: FC<IImgWithLoader> = ({ img, className }) => {
         <div className={`${style.imageWrapper} ${!isLoading && style.loaded}`}>
           <Image
             src={img}
-            width={1299}
+            width={1399}
             height={499}
             onLoadingComplete={() => setIsLoading(false)}
             style={
@@ -25,9 +30,10 @@ export const ImgWithLoader: FC<IImgWithLoader> = ({ img, className }) => {
                 ? { visibility: 'hidden', height: 0, width: 0 }
                 : { height: '100%', width: '100%' }
             }
+           
             alt=""
           />
-          <div className={style.share} />
+          {type === 'ordinary' && <div className={style.share} />}
         </div>
       )}
 
