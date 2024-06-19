@@ -6,38 +6,7 @@
   > h1 {
     @apply text-lg font-medium ml-5;
   }
-  .item {
-    @apply flex my-2 h-20 ml-6 transition-all duration-100;
-    span > h3 {
-      @apply text-base font-bold;
-    }
-    h3 {
-      white-space: nowrap; /* Текст не переносится */
-     
-      overflow: hidden; /* Обрезаем всё за пределами блока */
-      text-overflow: ellipsis; /* Добавляем многоточие */
-    }
-    div > .genres {
-      @apply text-gray-600 font-medium text-xs;
-      
-      span {
-        display: inline-block;
-        margin-right: 3px;
-      }
-    }
-    > div {
-      @apply flex flex-col justify-between;
-    }
-    > div:first-child {
-      @apply flex flex-col justify-between shrink-0;
-    }
-    img {
-      @apply rounded-md;
-    }
-  }
-  .item:hover {
-    @apply scale-105;
-  }
+ 
 }
 .customSearch {
   @apply relative;

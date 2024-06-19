@@ -2,12 +2,15 @@ import Image from 'next/image'
 import { FC, useState } from 'react'
 import style from './style.module.scss'
 import SkeletonLoader from 'ui/skeleton-loader/SkeletonLoader'
-import cl from 'classnames'
 
 interface IImgWithLoader {
   img?: string
   className: string
-  type?: 'ordinary' | 'popular'
+  type?: 'ordinary' | 'popular' | 'slider'
+}
+
+const styleSlider = {
+  slider: style.slider,
 }
 
 export const ImgWithLoader: FC<IImgWithLoader> = ({
@@ -28,12 +31,17 @@ export const ImgWithLoader: FC<IImgWithLoader> = ({
             style={
               isLoading
                 ? { visibility: 'hidden', height: 0, width: 0 }
-                : { height: '100%', width: '100%' }
+                : { height: '100%', width: '100%', objectFit: 'cover' }
             }
-           
             alt=""
           />
-          {type === 'ordinary' && <div className={style.share} />}
+          {type !== 'popular' && (
+            <div
+              className={`${style.share} ${
+                styleSlider[type as 'slider'] || ''
+              }`}
+            />
+          )}
         </div>
       )}
 

@@ -9,6 +9,7 @@ import Link from 'next/link'
 import { useGlobalProps } from 'global-props/contexts/GlobalPropsContext'
 import { GlobalProps } from 'global-props/GlobalProps'
 import { ImgWithLoader } from 'ui/img-with-loader/ImgWithLoader'
+import { MovieItem } from './MovieItem/MoviesInsideSidebar'
 const PopularMovies = () => {
   const { popularMovies } = useGlobalProps()
   return (
@@ -18,26 +19,13 @@ const PopularMovies = () => {
         <>
           {popularMovies.map((el) => {
             return (
-              <div
-                // href={`/movie/${el._id}`}
-                className={style.item}
-                key={el._id}
-              >
-                <ImgWithLoader
-                  img={el.poster}
-                  className="w-[60px] h-full mr-2"
-                  type="popular"
-                />
-                <div className={style.descriptionMovie}>
-                  <h3>{el.title}</h3>
-                  <div className={style.genres}>
-                    {el.genres.map((el) => (
-                      <span>{el.name}</span>
-                    ))}
-                  </div>
-                  <Rating rating={el.rating} />
-                </div>
-              </div>
+              <MovieItem
+                genres={el.genres}
+                id={el._id}
+                poster={el.poster}
+                rating={el.rating}
+                title={el.title}
+              />
             )
           })}
           <Button className="mx-5 py-2 w-44">See more</Button>

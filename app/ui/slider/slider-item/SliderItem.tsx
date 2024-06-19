@@ -12,7 +12,11 @@ const SliderItem: FC<ISliderItem> = ({ movie, currentImg }) => {
   const { push } = useRouter()
   return (
     <div className={style.sliderItem}>
-      <ImgWithLoader img={currentImg} className="h-[400px] w-full" />
+      <ImgWithLoader
+        img={currentImg}
+        className="h-[400px] w-full"
+        type="slider"
+      />
       <div className={style.description}>
         <p>{movie.title}</p>
         <span className={style.genres}>

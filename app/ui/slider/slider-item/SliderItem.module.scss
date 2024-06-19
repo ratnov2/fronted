@@ -1,9 +1,8 @@
 @import '../../../assets/styles/variables';
 .sliderItem {
-  @apply overflow-hidden rounded-3xl;
-
-  .img {
-    @apply image-like-bg;
+  @apply rounded-3xl;
+  img {
+    @apply rounded-3xl;
   }
   .description {
     @apply absolute bottom-0  px-7 z-1;
