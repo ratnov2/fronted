@@ -8,6 +8,6 @@ const movies = () => {
   )
 }
 export const getStaticProps = GlobalProps.getStaticProps(async () => {
-  return { props: {} }
+  return { props: {}, revalidate: +String(process.env.NEXT_PUBLIC_REVALIDATE) }
 })
 export default movies

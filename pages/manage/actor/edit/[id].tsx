@@ -10,10 +10,13 @@ const actorEdit = () => {
   )
 }
 export async function getStaticPaths() {
-  return { paths:[], fallback: false }
+  return {
+    paths: [],
+    fallback: 'blocking',
+  }
 }
 
 export const getStaticProps = GlobalProps.getStaticProps(async () => {
-  return { props: { movie: '' } }
+  return { props: {}, revalidate: +String(process.env.NEXT_PUBLIC_REVALIDATE) }
 })
 export default actorEdit

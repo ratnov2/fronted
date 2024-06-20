@@ -11,6 +11,6 @@ const Page404: FC = () => {
 }
 
 export const getStaticProps = GlobalProps.getStaticProps(async () => {
-  return { props: { movie: '' } }
+    return { props: {}, revalidate: +String(process.env.NEXT_PUBLIC_REVALIDATE) }
 })
 export default Page404

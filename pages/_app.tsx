@@ -18,5 +18,5 @@ export default function App({ Component, pageProps }: TypeAppProps) {
   )
 }
 export const getStaticProps = GlobalProps.getStaticProps(async () => {
-  return { props: {} }
+  return { props: {}, revalidate: +String(process.env.NEXT_PUBLIC_REVALIDATE) }
 })
