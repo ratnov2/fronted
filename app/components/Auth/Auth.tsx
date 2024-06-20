@@ -3,18 +3,12 @@ import { useForm } from 'react-hook-form'
 import Button from 'ui/form-ui/button/Button'
 import { SubmitHandler } from 'react-hook-form'
 import style from './auth.module.scss'
-import Field from 'ui/form-ui/Field/Field'
-import { yupResolver } from '@hookform/resolvers/yup'
-import * as yup from 'yup'
 import FieldScope from './FieldScope/FieldScope'
 import { IInputs } from './auth.interface'
-import { useMutation } from 'react-query'
-import { authApi } from '@/api/dataAPI'
 import { TypePostAuth } from '@/api/api.interface'
 import { useActions } from '@/hooks/useActions'
 import { useAuthState } from '@/hooks/useAuthState'
 import { useAuthRedirect } from '@/hooks/useAuthRedirect'
-import { toastr } from 'react-redux-toastr'
 
 const Auth: FC = () => {
   const [auth, isAuth] = useState<'login' | 'registration'>('login')
@@ -28,7 +22,7 @@ const Auth: FC = () => {
     mode: 'onChange',
   })
   useAuthRedirect()
-  console.log('formState',errors)
+
   const { registerAction, loginAction } = useActions()
   const { status } = useAuthState()
 

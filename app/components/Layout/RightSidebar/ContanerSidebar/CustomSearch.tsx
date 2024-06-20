@@ -8,7 +8,6 @@ import { useCustomSearch } from './useCustomSearch'
 import { ImgWithLoader } from 'ui/img-with-loader/ImgWithLoader'
 const CustomSearch = memo(() => {
   const { allMovies, isValue, value } = useCustomSearch()
-  console.log(allMovies.data?.length)
 
   return (
     <div className={style.customSearch}>

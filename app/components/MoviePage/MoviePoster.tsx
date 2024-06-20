@@ -11,7 +11,9 @@ import SkeletonLoader from 'ui/skeleton-loader/SkeletonLoader'
 import { ImgWithLoader } from 'ui/img-with-loader/ImgWithLoader'
 import { useQuery } from 'react-query'
 import { useRouter } from 'next/router'
-import { movieApi } from '@/api/dataAPI'
+import { movieApi, usersApi } from '@/api/dataAPI'
+import { useAuthState } from '@/hooks/useAuthState'
+import { useFavorites } from '../favorites/useFavorites'
 
 export interface TypesMoviePoster {
   actor?: IActor[]
@@ -20,15 +22,12 @@ export interface TypesMoviePoster {
 
 const MoviePoster: FC<TypesMoviePoster> = ({ actor, genre }) => {
   const { query } = useRouter()
-
-  const movie = useQuery(
-    [String(query.movie)],
-    () => movieApi.getById(String(query.movie)),
-    {
-      enabled: !!query.movie,
-    }
+  const { user } = useAuthState()
+  const movie = useQuery(String(query.movie), () =>
+    movieApi.getById(String(query.movie))
   )
-
+  const { favoritesMovies } = useFavorites()
+  
   return (
     <div className={style.BigPoster}>
       <ImgWithLoader
@@ -74,8 +73,14 @@ const MoviePoster: FC<TypesMoviePoster> = ({ actor, genre }) => {
 
           <div className={style.favorites}>
             <span>
-              <FavoriteButton movieId={movie.data.data._id} />
+              {user && favoritesMovies && (
+                <FavoriteButton
+                  movieId={movie.data.data._id}
+                  favoritesMovies={favoritesMovies}
+                />
+              )}
             </span>
+
             <span>
               <IoMdStar />
               <span>{movie.data.data.rating}</span>

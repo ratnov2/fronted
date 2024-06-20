@@ -1,6 +1,5 @@
 import React from 'react'
 import SkeletonLoader from 'ui/skeleton-loader/SkeletonLoader'
-import { useReqRightSidebar } from './useReqRightSidebar'
 import style from '../rightSidebar.module.scss'
 import Image from 'next/image'
 import Rating from 'ui/rating/Rating'
@@ -12,6 +11,7 @@ import { ImgWithLoader } from 'ui/img-with-loader/ImgWithLoader'
 import { MovieItem } from './MovieItem/MoviesInsideSidebar'
 const PopularMovies = () => {
   const { popularMovies } = useGlobalProps()
+
   return (
     <div className={style.movie}>
       <h1>Popular Movies</h1>
@@ -25,6 +25,7 @@ const PopularMovies = () => {
                 poster={el.poster}
                 rating={el.rating}
                 title={el.title}
+                key={el._id}
               />
             )
           })}

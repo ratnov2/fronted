@@ -1,6 +1,5 @@
 import React from 'react'
 import SkeletonLoader from 'ui/skeleton-loader/SkeletonLoader'
-import { useReqRightSidebar } from './useReqRightSidebar'
 import style from '../rightSidebar.module.scss'
 import Image from 'next/image'
 import Rating from 'ui/rating/Rating'
@@ -26,6 +25,7 @@ const FavoriteMovies = () => {
                   poster={el.poster}
                   rating={el.rating}
                   title={el.title}
+                  key={el._id}
                 />
               )
             })}

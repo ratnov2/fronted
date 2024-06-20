@@ -28,7 +28,7 @@ const AuthTable = () => {
         </div>
       ) : (
         <div>
-          <Link href={authData.login.link} >
+          <Link href={authData.login.link}>
             <figure className={style.figureMenu}>
               <MaterialIcon name={authData.login.icon} />
               <p>{authData.login.title}</p>

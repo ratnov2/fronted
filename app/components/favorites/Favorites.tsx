@@ -8,6 +8,8 @@ import { useFavorites } from './useFavorites'
 import Heading from 'ui/heading/Heading'
 import { Meta } from '@/utils/Meta'
 import SkeletonLoader from 'ui/skeleton-loader/SkeletonLoader'
+import { useQuery } from 'react-query'
+import { usersApi } from '@/api/dataAPI'
 
 const Favorites: FC = () => {
   const { favoritesMovies, isLoading } = useFavorites()
@@ -18,7 +20,7 @@ const Favorites: FC = () => {
       <section className={styles.favorites}>
         {isLoading ? (
           <SkeletonLoader
-            count={3}
+            count={10}
             className={styles.skeletonLoader}
             containerClassName={styles.containerLoader}
           />

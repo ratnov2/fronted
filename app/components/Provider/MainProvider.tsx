@@ -10,7 +10,7 @@ import RouterAndFirstLoading from 'ui/router-and-first-loading/RouterAndFirstLoa
 import { GlobalPropsContextProvider } from 'global-props/contexts/GlobalPropsContext'
 import { GlobalProps } from 'global-props/GlobalProps'
 import { AppProps } from 'next/app'
-import ReduxToastr from 'react-redux-toastr'
+import NextTopLoader from 'nextjs-toploader'
 
 export type TypeRoles = { isOnlyAdmin?: boolean; isOnlyUser?: boolean }
 
@@ -31,19 +31,23 @@ const MainProvider: FC<{
     <>
       <Provider store={store}>
         <QueryClientProvider client={queryClient}>
-        <ReduxToastrCus />
+          <ReduxToastrCus />
+          {!process.env.NEXT_PUBLIC_IS_PROD && <RouterAndFirstLoading />}
           <AuthProvider Component={Component}>
-            {/* <RouterAndFirstLoading /> */}
             <GlobalPropsContextProvider
               globalProps={GlobalProps.extract(pageProps)}
             >
+              <NextTopLoader showSpinner={false} color="#ff0009" />
               <Layout>{children}</Layout>
             </GlobalPropsContextProvider>
           </AuthProvider>
-         
         </QueryClientProvider>
       </Provider>
     </>
   )
 }
+export const getStaticProps = GlobalProps.getStaticProps(async () => {
+  return { props: {} }
+})
+
 export default MainProvider

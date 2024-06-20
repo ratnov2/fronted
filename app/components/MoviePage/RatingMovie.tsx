@@ -1,8 +1,9 @@
 import StarRatings from 'react-star-ratings'
 import style from './movie-page.module.scss'
 import { FC, useState } from 'react'
-import { useMutation } from 'react-query'
-import { ratingApi } from '@/api/dataAPI'
+import { useMutation, useQueryClient } from 'react-query'
+import { movieApi, ratingApi } from '@/api/dataAPI'
+import { useRouter } from 'next/router'
 
 export interface TypesRatingMovie {
   _id: string
@@ -10,18 +11,23 @@ export interface TypesRatingMovie {
 }
 
 const RatingMovie: FC<TypesRatingMovie> = ({ _id, movieRating }) => {
+  const { query } = useRouter()
+
   const [rating, setRating] = useState(movieRating)
   const [toastThank, setToast] = useState(false)
 
+  const queryClient = useQueryClient()
+
   const setRatingMovie = useMutation(
-    ['setRating'],
-    () => ratingApi.post(_id, rating),
+    'setRating',
+    (rating: number) => ratingApi.post(_id, rating),
     {
       onSuccess: () => {
-        setToast(true)
         setTimeout(() => {
           setToast(false)
         }, 2400)
+        queryClient.invalidateQueries(String(query.movie))
+       // queryClient.invalidateQueries('favorite_movies')
       },
     }
   )
@@ -29,7 +35,7 @@ const RatingMovie: FC<TypesRatingMovie> = ({ _id, movieRating }) => {
   const setRatingStar = (e: number) => {
     setRating(e)
     setToast(true)
-    setRatingMovie.mutate()
+    setRatingMovie.mutate(e)
   }
 
   return (

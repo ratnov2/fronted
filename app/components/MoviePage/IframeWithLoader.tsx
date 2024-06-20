@@ -12,12 +12,8 @@ interface IIframeWithLoader {
 export const IframeWithLoader: FC<IIframeWithLoader> = ({ className = '' }) => {
   const { query } = useRouter()
 
-  const movie = useQuery(
-    [String(query.movie)],
-    () => movieApi.getById(String(query.movie)),
-    {
-      enabled: !!query.movie,
-    }
+  const movie = useQuery([String(query.movie)], () =>
+    movieApi.getById(String(query.movie))
   )
   const [isLoading, setIsLoading] = useState(true)
   return (

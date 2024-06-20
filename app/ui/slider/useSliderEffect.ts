@@ -1,5 +1,5 @@
 import { useGlobalProps } from 'global-props/contexts/GlobalPropsContext'
-import { useMemo, useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 
 export const useSliderEffect = () => {
   const [currentIdx, setCurrentIdx] = useState(0)
@@ -26,10 +26,18 @@ export const useSliderEffect = () => {
     return setCurrentIdx(currentIdx - 1)
   }
 
+  const ref = useRef<any>(null)
+
   const handleClick = (direction: 'left' | 'right') => {
     setSlideIn(true)
-    setTimeout(() => {
+    if (ref.current !== null) {
+      clearTimeout(ref.current)
+    }
+
+    ref.current = setTimeout(() => {
       setSlideIn(false)
+      clearTimeout(ref.current)
+      ref.current = null
       if (direction === 'left') prevIndex()
       else nextIndex()
     }, 300)

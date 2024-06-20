@@ -32,7 +32,7 @@ export const MovieItem: FC<IMovieInsideSidebar> = ({
         <h3>{title}</h3>
         <div className={style.genres}>
           {genres.map((el) => (
-            <span>{el.name}</span>
+            <span key={el._id}>{el.name}</span>
           ))}
         </div>
         <Rating rating={rating} />

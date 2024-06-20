@@ -9,6 +9,6 @@ const genres = () => {
 }
 
 export const getStaticProps = GlobalProps.getStaticProps(async () => {
-  return { props: {} }
+  return { props: {}}
 })
 export default genres

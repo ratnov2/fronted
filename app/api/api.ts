@@ -1,7 +1,6 @@
 import axios from 'axios'
 import Cookies from 'js-cookie'
 
-console.log(process.env.NEXT_PUBLIC_BASE_URL);
 
 
 export const BASE_URL = `${process.env.NEXT_PUBLIC_BASE_URL}/api`

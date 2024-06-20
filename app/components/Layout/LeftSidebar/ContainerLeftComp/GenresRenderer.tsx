@@ -9,15 +9,15 @@ import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import SkeletonLoader from 'ui/skeleton-loader/SkeletonLoader'
 
-const GenresRenderer: FC<any> = ({ data }) => {
+const GenresRenderer: FC<{ genres: IGenres[] }> = ({ genres }) => {
   const { asPath } = useRouter()
   const url = asPath.replace('/genre/', '')
 
   return (
     <div className={style.menuStyle}>
       <h3>Genres</h3>
-      {data ? (
-        data.map((element: IGenres) => {
+      {genres?.length > 0 ? (
+        genres.map((element: IGenres) => {
           return (
             <Link
               key={element.name}
