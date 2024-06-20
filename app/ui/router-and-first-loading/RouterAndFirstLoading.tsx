@@ -4,70 +4,40 @@ import { CSSTransition } from 'react-transition-group'
 
 import style from './RouterAndFirstLoading.module.scss'
 import { useBlockOverflow } from '@/hooks/useBlockOverflow'
-import Loader from 'ui/loader/Loader'
+import { Loader } from 'ui/loader/Loader'
+import { useAuthState } from '@/hooks/useAuthState'
 
 const RouterAndFirstLoading = () => {
-  const [isLoadingRoute, setIsLoadingRoute] = useState(false)
-  const [isLoadingFirst, setIsLoadingFirst] = useState(true)
-  const [inProp, setInProp] = useState(false)
-  const { setIsHidden } = useBlockOverflow(true)
+  const { status } = useAuthState()
+  const [isLoader, setIsLoader] = useState(false)
+
   useEffect(() => {
-    Router.events.on('routeChangeStart', (url) => {
-      setIsLoadingRoute(true)
-      setIsHidden(true)
-    })
-    Router.events.on('routeChangeComplete', (url) => {
+    if (!status) {
       setTimeout(() => {
-        setIsLoadingRoute(false)
-      }, 1000)
-      setTimeout(() => {
-        setIsHidden(false)
+        setIsLoader(true)
       }, 1500)
-    })
-
-    Router.events.on('routeChangeError', (url) => {
-      setIsHidden(true)
-      setIsLoadingRoute(false)
-    })
-  }, [Router])
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoadingFirst(false)
-    }, 1000)
-    setTimeout(() => {
-      setIsHidden(false)
-    }, 1500)
-  }, [])
-
-  useEffect(() => {
-    if (isLoadingRoute || isLoadingFirst) {
-      setInProp(true)
-    } else {
-      setInProp(false)
     }
-  }, [isLoadingRoute, isLoadingFirst])
+  }, [status])
 
   const nodeRef = useRef<any>(null)
 
   return (
-      <CSSTransition
-        timeout={1000}
-        classNames={{
-          enter: style.enter,
-          enterActive: style.enterActive,
-          exit: style.exit,
-          exitActive: style.exitActive,
-          exitDone: style.exitDone,
-        }}
-        in={inProp}
-        nodeRef={nodeRef}
-      >
-        <div ref={nodeRef} className="h-[100%] w-[100vw] absolute z-50">
-          <Loader />
-        </div>
-      </CSSTransition>
-
+    <CSSTransition
+      timeout={1000}
+      classNames={{
+        enter: style.enter,
+        enterActive: style.enterActive,
+        exit: style.exit,
+        exitActive: style.exitActive,
+        exitDone: style.exitDone,
+      }}
+      in={!isLoader}
+      nodeRef={nodeRef}
+    >
+      <div ref={nodeRef} className="h-[100%] w-[100vw] fixed z-50 top-0">
+        <Loader />
+      </div>
+    </CSSTransition>
   )
 }
 export default RouterAndFirstLoading

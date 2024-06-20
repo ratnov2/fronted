@@ -29,7 +29,6 @@ body{
 *:before,
 * {
 	box-sizing: border-box;
-	transform-style: preserve-3d;
 }
 
 .slide-animation-enter {

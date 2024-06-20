@@ -1,17 +1,21 @@
 import { useGlobalProps } from 'global-props/contexts/GlobalPropsContext'
-import { useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 
-export const  useSliderEffect = () => {
+export const useSliderEffect = () => {
   const [currentIdx, setCurrentIdx] = useState(0)
   const { popularMovies } = useGlobalProps()
   const [slideIn, setSlideIn] = useState(false)
 
-  const popularMoviesConverted = popularMovies.map((el) => ({
-    id: el._id,
-    bigPoster: el.bigPoster,
-    genres: el.genres,
-    title: el.title,
-  }))
+  const popularMoviesConverted = useMemo(
+    () =>
+      popularMovies.map((el) => ({
+        id: el._id,
+        bigPoster: el.bigPoster,
+        genres: el.genres,
+        title: el.title,
+      })),
+    []
+  )
 
   const nextIndex = () => {
     if (currentIdx === 2) return setCurrentIdx(0)
@@ -22,10 +26,18 @@ export const  useSliderEffect = () => {
     return setCurrentIdx(currentIdx - 1)
   }
 
+  const ref = useRef<any>(null)
+
   const handleClick = (direction: 'left' | 'right') => {
     setSlideIn(true)
-    setTimeout(() => {
+    if (ref.current !== null) {
+      clearTimeout(ref.current)
+    }
+
+    ref.current = setTimeout(() => {
       setSlideIn(false)
+      clearTimeout(ref.current)
+      ref.current = null
       if (direction === 'left') prevIndex()
       else nextIndex()
     }, 300)

@@ -3,7 +3,6 @@ import { useQuery } from "react-query"
 
 
 export const useStatistics = ()=>{
-  console.log('$$$$')
   const countUsers = useQuery('getCountUsers', () => usersApi.count(), {
     select: ({ data }) => data,
   })

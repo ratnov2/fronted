@@ -1,7 +1,8 @@
 import { BASE_URL } from '@/api/api'
-import { actorsApi, movieApi, usersApi } from '@/api/dataAPI'
+import { actorsApi, genresApi, movieApi, usersApi } from '@/api/dataAPI'
 import {
   IActor,
+  IGenre,
   IMovieFavorite,
   IMoviePopular,
 } from '@/shared/types/movie.types'
@@ -15,21 +16,25 @@ import { getStaticPropsWithGlobalProps } from './lib/getStaticPropsWithGlobalPro
 export type GlobalProps = {
   popularMovies: IMoviePopular[]
   actors: IActor[]
+  genres: IGenre[]
 }
 
 export async function fetchGlobalProps(): Promise<GlobalProps> {
   const popularMovies = await movieApi.mostPopular(BASE_URL)
   const actors = await actorsApi.getAll('', BASE_URL)
+  const genres = await genresApi.getAll('', BASE_URL)
+
   return {
     popularMovies: popularMovies.data,
     actors: actors.data,
+    genres: genres.data,
   }
 }
 export const GlobalProps = {
   getStaticProps: getStaticPropsWithGlobalProps,
 
   getEmptyStaticProps: getStaticPropsWithGlobalProps(async () => ({
-    props: { popularMovies: [], actors: [] },
+    props: { popularMovies: [], actors: [], genres: [] },
   })),
   Provider: GlobalPropsContextProvider,
   use: useGlobalProps,

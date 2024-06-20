@@ -1,5 +1,4 @@
 import React from 'react'
-import { Controller } from 'react-hook-form'
 import Button from 'ui/form-ui/button/Button'
 import FieldScope from './FormContainer/GenreFieldScope'
 import useEditGenre from './useEditGenre'

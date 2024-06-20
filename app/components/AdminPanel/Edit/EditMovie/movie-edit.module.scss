@@ -1,5 +1,8 @@
 .twoRow {
   @apply flex justify-between;
+  .custom-select {
+    @apply w-1;
+  }
 }
 .select {
   @apply flex justify-between;

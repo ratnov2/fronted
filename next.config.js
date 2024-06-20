@@ -7,23 +7,27 @@ const nextConfig = {
   swcMinify: true,
   experimental: { appDir: false },
   images: {
-    domains: [
-      'test2-ratnov2.vercel.app',
-      'i.postimg.cc',
-      'downloader.disk.yandex.ru',
-      'www.youtube.com'
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+      {
+        protocol: 'http',
+        hostname: '**',
+      },
     ],
   },
-  async rewrites() {
-    return [
-      {
-        source: '/api/:path*',
-        destination: url
-          ? `https://test2-ratnov2.vercel.app/api/:path*`
-          : 'http://localhost:4200/api/:path*',
-      },
-    ]
-  },
+  // async rewrites() {
+  //   return [
+  //     {
+  //       source: '/api/:path*',
+  //       destination: url
+  //         ? `https://test2-ratnov2.vercel.app/api/:path*`
+  //         : 'http://localhost:4200/api/:path*',
+  //     },
+  //   ]
+  // },
 }
 
 module.exports = nextConfig

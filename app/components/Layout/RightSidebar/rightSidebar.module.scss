@@ -6,60 +6,46 @@
   > h1 {
     @apply text-lg font-medium ml-5;
   }
-  .item {
-    @apply flex my-2 h-20 ml-6 transition-all duration-100;
-    span > h3 {
-      @apply text-base font-bold;
-    }
-    span > .genres {
-      @apply text-gray-600 font-medium text-xs;
-      span{
-        display: inline-block;
-        margin-right: 3px;
-      }
-    }
-    > div {
-      @apply flex flex-col justify-between;
-    }
-    > img {
-      @apply rounded-md mr-2;
-    }
-  }
-  .item:hover{
-    @apply scale-105
-  }
+ 
 }
-.customSearch{
-  @apply relative
+.customSearch {
+  @apply relative;
 }
 .list {
-	@apply absolute border border-gray-700 rounded-layout bg-gray-800 w-full animate-fade z-[9999];
-	top: calc(100% + 15px);
+  @apply absolute border border-gray-700 rounded-layout bg-gray-800 w-full animate-fade z-[9999];
+  top: calc(100% + 15px);
 
-	> a {
-		@apply flex items-center py-3 px-4 relative;
+  > a {
+    @apply flex items-center py-3 px-4 relative;
 
-		&::after {
-			@apply absolute -right-0.5 h-0 w-0.5 bg-transparent;
-			content: '';
-			top: 28%;
-			transition: height 0.3s ease-in-out, background-color 0.3s ease-in-out;
-		}
+    &::after {
+      @apply absolute -right-0.5 h-0 w-0.5 bg-transparent;
+      content: '';
+      top: 28%;
+      transition: height 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    }
 
-		&:hover::after {
-			@apply bg-primary h-2/5;
-		}
+    &:hover::after {
+      @apply bg-primary h-2/5;
+    }
 
-		img {
-			@apply rounded-image;
-		}
+    img {
+      @apply rounded-image;
+    }
 
-		> span {
-			@apply ml-3 text-white truncate;
+    &.descriptionMovie {
+      @apply ml-3 text-white truncate bg-white;
+    }
+    // span {
+    //   @apply ml-3 text-white truncate bg-white;
 
-			&:last-child {
-				width: 70%;
-			}
-		}
-	}
+    //   // white-space: nowrap; /* Текст не переносится */
+    //   // overflow: hidden; /* Обрезаем всё за пределами блока */
+    //   // text-overflow: ellipsis; /* Добавляем многоточие */
+
+    //   &:last-child {
+    //     width: 70%;
+    //   }
+    // }
+  }
 }

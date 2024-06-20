@@ -1,52 +1,44 @@
 import { usersApi } from '@/api/dataAPI'
 import cn from 'classnames'
 import { FC, useEffect, useState } from 'react'
-import { useMutation } from 'react-query'
-
-// import { UserService } from '@/services/user/user.service'
-
-// import { toastError } from '@/utils/api/withToastrErrorRedux'
-
+import { useMutation, useQuery, useQueryClient } from 'react-query'
 import { useFavorites } from '../../components/favorites/useFavorites'
 
 import styles from './FavoriteButton.module.scss'
 import HeartImage from './heart-animation.png'
+import { IMovieFavorite } from '@/shared/types/movie.types'
 
-const FavoriteButton: FC<{ movieId: string }> = ({ movieId }) => {
-	const [isSmashed, setIsSmashed] = useState(false)
+const FavoriteButton: FC<{
+  favoritesMovies: IMovieFavorite[]
+  movieId: string
+}> = ({ movieId, favoritesMovies }) => {
+  const [isSmashed, setIsSmashed] = useState(
+    favoritesMovies.some((f) => f._id === movieId)
+  )
+  const queryClient = useQueryClient()
 
-	const { favoritesMovies, refetch } = useFavorites()
+  const { mutate } = useMutation(
+    'toggle_faforite_film',
+    () => usersApi.toggleFavoriteFilm(movieId),
+    {
+      onSuccess(data) {
+        queryClient.invalidateQueries('favorite_movies')
+      },
+    }
+  )
 
-	useEffect(() => {
-		if (favoritesMovies) {
-			const isHasMovie = favoritesMovies.some((f) => f._id === movieId)
-			if (isSmashed !== isHasMovie) setIsSmashed(isHasMovie)
-		}
-	}, [favoritesMovies, isSmashed, movieId])
-
-	const { mutateAsync } = useMutation(
-		'update actor',
-		() => usersApi.toggleFavoriteFilm(movieId),
-		{
-			// onError(error) {
-			// 	toastError(error, 'Update favorite list')
-			// },
-			onSuccess() {
-				setIsSmashed(!isSmashed)
-				refetch()
-			},
-		}
-	)
-
-	return (
-		<button
-			onClick={() => mutateAsync()}
-			className={cn(styles.button, {
-				[styles.animate]: isSmashed,
-			})}
-			style={{ backgroundImage: `url(${HeartImage.src})` }}
-		/>
-	)
+  return (
+    <button
+      onClick={() => {
+        setIsSmashed(!isSmashed)
+        mutate()
+      }}
+      className={cn(styles.button, {
+        [styles.animate]: isSmashed,
+      })}
+      style={{ backgroundImage: `url(${HeartImage.src})` }}
+    />
+  )
 }
 
 export default FavoriteButton

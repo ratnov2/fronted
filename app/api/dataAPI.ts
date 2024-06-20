@@ -12,10 +12,11 @@ import { ICollection } from 'ui/collections/collections.types'
 import { $file, $host } from './api'
 import { getContentType } from './api.helpers'
 import { TypePostAuth, TypesUserDataPut } from './api.interface'
+import { IInputActor } from '@/components/AdminPanel/Edit/EditActor/actor-edit.interface'
 
 export const genresApi = {
-  async getAll(searchTerm?: string) {
-    const response = await $host.get<IGenre[]>('genres/', {
+  async getAll(searchTerm?: string, url: string = '') {
+    const response = await $host.get<IGenre[]>(`${url}/genres/`, {
       params: searchTerm
         ? {
             searchTerm,
@@ -140,6 +141,7 @@ export const usersApi = {
     const response = await $host.post(`users/profile/favorites`, {
       movieId,
     })
+
     return response
   },
 }
@@ -220,7 +222,7 @@ export const actorsApi = {
     const response = await $host.post(`actors/`)
     return response
   },
-  async putId(data: IActor) {
+  async putId(data: IInputActor) {
     const response = await $host.put(`actors/${data._id}`, data)
     return response
   },
@@ -235,8 +237,8 @@ export const fileApi = {
 export const ratingApi = {
   async post(movieId: string, rating: number) {
     const response = $host.post('/ratings/set-rating', {
-      movieId: '63892865dba918152a9ef460',
-      value: 4,
+      movieId,
+      value: rating,
     })
     return response
   },

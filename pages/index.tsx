@@ -1,17 +1,12 @@
 import HomePage from '@/components/HomePage/HomePage'
 import { useGlobalProps } from 'global-props/contexts/GlobalPropsContext'
 import { GlobalProps } from 'global-props/GlobalProps'
-import { FC } from 'react'
 
-//type PageProps = InferGetStaticPropsType<typeof getStaticProps>
-
-const Home: FC<any> = () => {
+const Home = () => {
   return <HomePage />
 }
 export const getStaticProps = GlobalProps.getStaticProps(async () => {
-  return { props: { } }
+  return { props: {}, revalidate: +String(process.env.NEXT_PUBLIC_REVALIDATE) }
 })
-
-
 
 export default Home

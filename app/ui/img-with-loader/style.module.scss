@@ -1,0 +1,22 @@
+@import '../../assets/styles/variables';
+
+.imageWrapper {
+  opacity: 0;
+  height: 0;
+  width: 0;
+  transition: opacity 1s ease-in-out;
+  position: relative;
+
+  .share {
+    @include fade-bg-gradient(10deg);
+    @apply w-[100%] h-[100%] absolute top-0 z-0;
+  }
+}
+.imageWrapper.loaded {
+  opacity: 1;
+  height: 100%;
+  width: 100%;
+}
+.slider::before {
+  border-radius: 1.42rem;
+}

@@ -1,15 +1,17 @@
 import axios from 'axios'
 import Cookies from 'js-cookie'
 
-export const BASE_URL = 'https://test2-ratnov2.vercel.app/api'
+
+
+export const BASE_URL = `${process.env.NEXT_PUBLIC_BASE_URL}/api`
 
 export const $host = axios.create({
-  baseURL: '/api/',
+  baseURL: BASE_URL,
 })
 
 $host.interceptors.request.use(
   (config) => {
-    const token = Cookies.get('accessToken')
+    const token = Cookies.get('accessToken') 
     if (token) {
       config.headers['Authorization'] = 'Bearer ' + token
     }

@@ -1,25 +1,37 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Button from 'ui/form-ui/button/Button'
-import {useEditMovie} from './useEditMovie'
+import { useEditMovie } from './useEditMovie'
 import MovieFieldScope from './FormContainer/MovieFieldScope'
 
 import { generateSlug } from '@/utils/generateSlug/generateSlug'
 
 import { useReqEditMovie } from './useReqEditMovie'
+import { useRequest } from './useRequest'
+import { useRouter } from 'next/router'
 
 const EditMovie = () => {
+  const { query } = useRouter()
+  const id = String(query.id)
+
   const {
     register,
+    reset,
     errors,
     handleSubmit,
     getValues,
     setValue,
     control,
-    id,
-    genre,
-    actor
   } = useEditMovie()
+
+  const { actor, genre, movie } = useRequest(id)
+
   const { onSubmit } = useReqEditMovie(id)
+
+  useEffect(() => {
+    if (movie.data && genre.data && actor.data) {
+      reset(movie.data)
+    }
+  }, [movie.data, genre.data, actor.data])
 
   return (
     <>

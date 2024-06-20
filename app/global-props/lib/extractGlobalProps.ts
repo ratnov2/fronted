@@ -8,7 +8,8 @@ export function extractGlobalProps(data: any): GlobalProps {
   // Do it the correct way with type validation and default values
   return {
     popularMovies: data.popularMovies,
-    actors:data.actors
+    actors:data.actors,
+    genres:data.genres
   };
 
   // Or do it the lazy, error prone way if you trust your pageProps to have

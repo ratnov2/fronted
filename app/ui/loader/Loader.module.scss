@@ -1,0 +1,21 @@
+.loading {
+  display: flex;
+  justify-content: center;
+
+  &.loading::after {
+    @apply border-solid border-[10px] border-gray-800;
+    content: '';
+    width: 40px;
+    height: 40px;
+
+    border-top-color: #da0505;
+    border-radius: 50%;
+    animation: loading 1s ease infinite;
+  }
+}
+
+@keyframes loading {
+  to {
+    transform: rotate(1turn);
+  }
+}

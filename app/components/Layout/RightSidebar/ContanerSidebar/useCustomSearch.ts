@@ -5,13 +5,13 @@ import { useEffect, useState } from 'react'
 import { useMutation, useQuery } from 'react-query'
 
 export const useCustomSearch = () => {
-  const [isSearching, setIsSearching] = useState(false)
+  
   const [value, isValue] = useState('')
 
   const debouncedSearchTerm = useDebounce(value, 500)
 
   const allMovies = useQuery(
-    'getAllMovies',
+    'getAllPopularMovies',
     () => movieApi.getAllMovies(value),
     {
       select: ({ data }) =>
@@ -22,17 +22,17 @@ export const useCustomSearch = () => {
           rating: el.rating,
           poster: el.poster,
         })),
-      enabled: isSearching,
+      enabled: value === debouncedSearchTerm && value !== '',
     }
   )
 
-  useEffect(() => {
-    if (debouncedSearchTerm) {
-      setIsSearching(true)
-    } else {
-      setIsSearching(false)
-    }
-  }, [debouncedSearchTerm])
+  // useEffect(() => {
+  //   if (debouncedSearchTerm) {
+  //     setIsSearching(true)
+  //   } else {
+  //     setIsSearching(false)
+  //   }
+  // }, [debouncedSearchTerm])
 
-  return { allMovies, isValue, value, debouncedSearchTerm, isSearching }
+  return { allMovies, isValue, value, debouncedSearchTerm }
 }

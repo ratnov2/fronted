@@ -13,19 +13,21 @@ const Slider = () => {
 
   return (
     <div className={style.slider}>
-      <CSSTransition
-        nodeRef={nodeRef}
-        in={slideIn}
-        timeout={300}
-        classNames="slide-animation"
-      >
-        <div ref={nodeRef}>
-          <SliderItem
-            currentImg={popularMoviesConverted[currentIdx].bigPoster}
-            movie={popularMoviesConverted[currentIdx]}
-          />
-        </div>
-      </CSSTransition>
+      {popularMoviesConverted[currentIdx] && (
+        <CSSTransition
+          nodeRef={nodeRef}
+          in={slideIn}
+          timeout={300}
+          classNames="slide-animation"
+        >
+          <div ref={nodeRef}>
+            <SliderItem
+              currentImg={popularMoviesConverted[currentIdx].bigPoster}
+              movie={popularMoviesConverted[currentIdx]}
+            />
+          </div>
+        </CSSTransition>
+      )}
       <div className={style.buttonGroup}>
         <button onClick={() => handleClick('left')}>
           <MaterialIcon name="MdArrowBackIos" />

@@ -1,15 +1,11 @@
 @import '../../../assets/styles/variables';
 .sliderItem {
-  @apply overflow-hidden rounded-3xl;
-  .share {
-    @include fade-bg-gradient();
-    @apply w-[100%] h-[100%] absolute top-0;
-  }
-  .img {
-    @apply image-like-bg;
+  @apply rounded-3xl;
+  img {
+    @apply rounded-3xl;
   }
   .description {
-    @apply absolute bottom-0 h-32 px-7;
+    @apply absolute bottom-0  px-7 z-1;
     p {
       @apply text-3xl font-bold;
     }
