@@ -1,12 +1,8 @@
-import { GlobalProps } from 'global-props/GlobalProps'
+import { GlobalProps, GlobalPropsEmpty } from 'global-props/GlobalProps'
 import { createContext, useContext, ReactNode } from 'react'
 
 // Default value for global props
-export const defaultGlobalPropsContextValue: GlobalProps = {
-  popularMovies: [],
-  actors: [],
-  genres: [],
-}
+export const defaultGlobalPropsContextValue: GlobalProps = GlobalPropsEmpty
 
 // Global props context
 export const GlobalPropsContext = createContext<GlobalProps>(

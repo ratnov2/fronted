@@ -35,8 +35,8 @@ export const genresApi = {
     })
     return response
   },
-  async getCollections() {
-    return $host.get<ICollection[]>('genres/collections')
+  async getCollections(url = '') {
+    return $host.get<ICollection[]>(`${url}/genres/collections`)
   },
   async getBySlug(slug: string) {
     const response = await $host.get<IGenre>(`genres/by-slug/${slug}`)
@@ -156,8 +156,8 @@ export const movieApi = {
     const response = await $host.post<string>('movies')
     return response
   },
-  async getByGenres(genreIds?: string[] | string) {
-    const response = await $host.post<IMovie[]>('movies/by-genres', {
+  async getByGenres(genreIds?: string[] | string, url = '') {
+    const response = await $host.post<IMovie[]>(`${url}/movies/by-genres`, {
       genreIds,
     })
     return response
@@ -186,8 +186,8 @@ export const movieApi = {
     const response = await $host.get<IMovie>(`movies/by-slug/${slug}`)
     return response
   },
-  async getAllMovies(searchTerm?: string) {
-    const response = await $host.get<IMovie[]>('movies', {
+  async getAllMovies(searchTerm?: string, url = '') {
+    const response = await $host.get<IMovie[]>(`${url}/movies`, {
       params: searchTerm
         ? {
             searchTerm,

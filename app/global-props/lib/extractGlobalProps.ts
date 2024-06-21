@@ -1,18 +1,19 @@
-
-import { movieApi } from "@/api/dataAPI";
-import { GlobalProps } from "global-props/GlobalProps";
-import { defaultGlobalPropsContextValue } from "../contexts/GlobalPropsContext";
+import { movieApi } from '@/api/dataAPI'
+import { GlobalProps } from 'global-props/GlobalProps'
+import { defaultGlobalPropsContextValue } from '../contexts/GlobalPropsContext'
 
 export function extractGlobalProps(data: any): GlobalProps {
-  if (!data) return defaultGlobalPropsContextValue;
+  if (!data) return defaultGlobalPropsContextValue
   // Do it the correct way with type validation and default values
   return {
     popularMovies: data.popularMovies,
-    actors:data.actors,
-    genres:data.genres
-  };
+    actors: data.actors,
+    genres: data.genres,
+    allMovies: data.allMovies,
+    collectionByGenres: data.collectionByGenres,
+  }
 
   // Or do it the lazy, error prone way if you trust your pageProps to have
-    // the correct shape
-    // return data as GlobalProps;
+  // the correct shape
+  // return data as GlobalProps;
 }
