@@ -27,6 +27,7 @@ const MainProvider: FC<{
   Component: TypeRoles
   pageProps: AppProps
 }> = ({ children, Component, pageProps }) => {
+  
   return (
     <>
       <Provider store={store}>
