@@ -20,14 +20,25 @@ export type GlobalProps = {
 }
 
 export async function fetchGlobalProps(): Promise<GlobalProps> {
-  const popularMovies = await movieApi.mostPopular(BASE_URL)
-  const actors = await actorsApi.getAll('', BASE_URL)
-  const genres = await genresApi.getAll('', BASE_URL)
+  const popularMovies = movieApi.mostPopular(BASE_URL)
+  const actors = actorsApi.getAll('', BASE_URL)
+  const genres = genresApi.getAll('', BASE_URL)
+  try {
+    const popularMoviesData = await popularMovies
+    const actorsData = await actors
+    const genresData = await genres
 
-  return {
-    popularMovies: popularMovies.data,
-    actors: actors.data,
-    genres: genres.data,
+    return {
+      popularMovies: popularMoviesData.data,
+      actors: actorsData.data,
+      genres: genresData.data,
+    }
+  } catch (e) {
+    return {
+      popularMovies: [],
+      actors: [],
+      genres: [],
+    }
   }
 }
 export const GlobalProps = {
