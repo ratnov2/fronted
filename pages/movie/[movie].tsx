@@ -4,17 +4,13 @@ import { GetServerSidePropsContext } from 'next'
 import React from 'react'
 
 const movie = () => {
-  return (
-    <div>
-      <MoviePage />
-    </div>
-  )
+  return <MoviePage />
 }
 
 export async function getStaticPaths() {
   return {
     paths: [],
-    fallback: 'blocking',
+    fallback: false,
   }
 }
 

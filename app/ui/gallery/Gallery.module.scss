@@ -10,7 +10,7 @@
 }
 
 .item {
-  @apply relative transition-transform flex items-end shadow-lg rounded-layout overflow-hidden;
+  @apply relative transition-transform flex items-end shadow-lg rounded-layout overflow-hidden h-full w-full;
   flex: 1 1 auto;
 
   &:hover {
@@ -18,7 +18,11 @@
   }
 
   &.vertical {
-    @apply mr-4 last:mr-0 w-1/5 h-72;
+    @apply mr-4 last:mr-0 aspect-w-4;
+    aspect-ratio: 4 / 6;
+    width: 100%;
+    height: auto;
+    min-width: 100px;
     max-width: 200px;
   }
 

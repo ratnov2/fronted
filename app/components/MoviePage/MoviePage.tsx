@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import Gallery from 'ui/gallery/Gallery'
 import MoviePoster from './MoviePoster'
 import RatingMovie from './RatingMovie'
@@ -15,39 +15,37 @@ const MoviePage = () => {
   const { user } = useAuthState()
 
   return (
-    <div key={String(query.movie)}>
-      <>
-        <MoviePoster actor={ActorState} genre={GenreState} />
-        {/* <VideoPlayer
+    <Fragment key={String(query.movie)}>
+      <MoviePoster actor={ActorState} genre={GenreState} />
+      {/* <VideoPlayer
             videoSource={movie.data.data.videoUrl}
             slug={movie.data.data.slug}
           /> */}
-        {user ? (
-          <IframeWithLoader className="h-[400px] w-full mt-12" />
-        ) : (
-          <div className="mt-12 text-center">
-            <p className="text-center text-2lg">
-              To watch the video, you need to log in
-            </p>
-            <Link href={`/auth?redirect=${asPath}`}>
-              <Button className="font-bold">Log in</Button>
-            </Link>
-          </div>
-        )}
-        {movieByGenre.data && movieByGenre.data.length > 0 && (
-          <>
-            <h2 className="text-2lg mt-6">Related videos</h2>
-            <Gallery items={movieByGenre.data} />
-          </>
-        )}
-        {user && movie.data?.data && (
-          <RatingMovie
-            movieRating={movie.data.data.rating}
-            _id={movie.data.data._id}
-          />
-        )}
-      </>
-    </div>
+      {user ? (
+        <IframeWithLoader className="w-full h-auto mt-12 min-w-[300px]" />
+      ) : (
+        <div className="mt-12 text-center">
+          <p className="text-center text-2lg">
+            To watch the video, you need to log in
+          </p>
+          <Link href={`/auth?redirect=${asPath}`}>
+            <Button className="font-bold">Log in</Button>
+          </Link>
+        </div>
+      )}
+      {movieByGenre.data && movieByGenre.data.length > 0 && (
+        <>
+          <h2 className="text-2lg mt-6">Related videos</h2>
+          <Gallery items={movieByGenre.data} />
+        </>
+      )}
+      {user && movie.data?.data && (
+        <RatingMovie
+          movieRating={movie.data.data.rating}
+          _id={movie.data.data._id}
+        />
+      )}
+    </Fragment>
   )
 }
 

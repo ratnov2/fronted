@@ -1,8 +1,21 @@
-.slider{
-  position: relative;
-  .buttonGroup{
-    position: absolute;
-    right: 30px;
-    bottom: 15px;
+.slider {
+  @apply relative w-full h-auto min-w-[300px] ;
+  
+  .buttonGroup {
+    @apply absolute right-[30px] bottom-[15px] flex;
+
+    button {
+      @apply bg-gray-600/50 rounded-full flex justify-center items-center p-2 hover:bg-gray-600/80;
+
+      &:first-child {
+        @apply mr-2;
+        svg {
+          @apply rotate-180 -translate-x-1;
+        }
+      }
+      svg {
+        @apply flex-1;
+      }
+    }
   }
 }

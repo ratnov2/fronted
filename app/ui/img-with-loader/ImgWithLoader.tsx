@@ -22,7 +22,7 @@ export const ImgWithLoader: FC<IImgWithLoader> = ({
   return (
     <div className={className}>
       {img && (
-        <div className={`${style.imageWrapper} ${!isLoading && style.loaded}`}>
+        <div className={`${style.imageWrapper} ${!isLoading && style.loaded} ${style[type]}`}>
           <Image
             src={img}
             width={1399}

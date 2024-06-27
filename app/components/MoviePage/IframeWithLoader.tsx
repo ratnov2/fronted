@@ -17,7 +17,7 @@ export const IframeWithLoader: FC<IIframeWithLoader> = ({ className = '' }) => {
   )
   const [isLoading, setIsLoading] = useState(true)
   return (
-    <div className={`${className}`}>
+    <div className={`${className}`} style={{ aspectRatio: 16 / 9 }}>
       {movie.data?.data && (
         <div className={`${style.wrapper} ${!isLoading && style.loaded}`}>
           <iframe

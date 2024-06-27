@@ -30,10 +30,10 @@ const Slider = () => {
       )}
       <div className={style.buttonGroup}>
         <button onClick={() => handleClick('left')}>
-          <MaterialIcon name="MdArrowBackIos" />
+          <MaterialIcon name="MdArrowForwardIos" size={30} />
         </button>
         <button onClick={() => handleClick('right')}>
-          <MaterialIcon name="MdArrowForwardIos" />
+          <MaterialIcon name="MdArrowForwardIos" size={30} />
         </button>
       </div>
     </div>

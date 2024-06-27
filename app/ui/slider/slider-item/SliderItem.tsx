@@ -12,11 +12,7 @@ const SliderItem: FC<ISliderItem> = ({ movie, currentImg }) => {
   const { push } = useRouter()
   return (
     <div className={style.sliderItem}>
-      <ImgWithLoader
-        img={currentImg}
-        className="h-[400px] w-full"
-        type="slider"
-      />
+      <ImgWithLoader img={currentImg} className="w-full" type="slider" />
       <div className={style.description}>
         <p>{movie.title}</p>
         <span className={style.genres}>
@@ -35,12 +31,9 @@ const SliderItem: FC<ISliderItem> = ({ movie, currentImg }) => {
             <span>Not a Genre</span>
           )}
         </span>
-        <Button
-          className={style.watch}
-          onClick={() => push(`movie/${movie.id}` || '')}
-        >
-          Watch
-        </Button>
+        <Link href={`movie/${movie.id}`}>
+          <Button className={style.watch}>Watch</Button>
+        </Link>
       </div>
     </div>
   )

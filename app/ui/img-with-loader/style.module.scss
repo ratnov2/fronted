@@ -20,3 +20,9 @@
 .slider::before {
   border-radius: 1.42rem;
 }
+.slider {
+  .slider img,
+  .ordinary img {
+    aspect-ratio: 16/9;
+  }
+}

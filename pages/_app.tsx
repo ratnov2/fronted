@@ -9,7 +9,6 @@ export interface TypeComponentAuthFields {
 }
 type TypeAppProps = AppProps & TypeComponentAuthFields
 
-
 export default function App({ Component, pageProps }: TypeAppProps) {
   return (
     <MainProvider Component={Component} pageProps={pageProps}>
@@ -17,6 +16,3 @@ export default function App({ Component, pageProps }: TypeAppProps) {
     </MainProvider>
   )
 }
-export const getStaticProps = GlobalProps.getStaticProps(async () => {
-  return { props: {}, revalidate: +String(process.env.NEXT_PUBLIC_REVALIDATE) }
-})

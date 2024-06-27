@@ -32,7 +32,7 @@ const MoviePoster: FC<TypesMoviePoster> = ({ actor, genre }) => {
     <div className={style.BigPoster}>
       <ImgWithLoader
         img={movie.data?.data.bigPoster}
-        className="h-[300px] w-full"
+        className="w-full "
       />
       {movie.data?.data && (
         <>
