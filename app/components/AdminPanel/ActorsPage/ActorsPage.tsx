@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, Suspense } from 'react'
 import Button from 'ui/form-ui/button/Button'
 import Search from 'ui/serch/Search'
 import TableSearchCreate from 'ui/table-search-create/TableSearchCreate'
@@ -13,26 +13,24 @@ const ActorsPage: FC = () => {
     useActorsPage()
 
   return (
-    <div>
-      <div>
-        <NavigationAdmin />
-        <div className="animate-fade">
-          <TableSearchCreate
-            value={value}
-            isValue={isValue}
-            createHandler={createHandler}
-            title="Actors"
-          />
-          <HeadTable data={itemActorsDataTable} />
-          <Table
-            data={allActors.data}
-            isLoading={allActors.isLoading}
-            removeHandler={deleteHandler}
-            edit="actor"
-          />
-        </div>
+    <>
+      <NavigationAdmin />
+      <div className="animate-fade">
+        <TableSearchCreate
+          value={value}
+          isValue={isValue}
+          createHandler={createHandler}
+          title="Actors"
+        />
+        <HeadTable data={itemActorsDataTable} />
+        <Table
+          data={allActors.data}
+          isLoading={allActors.isLoading}
+          removeHandler={deleteHandler}
+          edit="actor"
+        />
       </div>
-    </div>
+    </>
   )
 }
 

@@ -1,5 +1,6 @@
 const { headers } = require('next/dist/client/components/headers')
 
+
 /** @type {import('next').NextConfig} */
 const url = true
 const nextConfig = {
@@ -12,7 +13,7 @@ const nextConfig = {
         protocol: 'https',
         hostname: '**',
       },
-      
+
       {
         protocol: 'http',
         hostname: '**',
@@ -32,3 +33,8 @@ const nextConfig = {
 }
 
 module.exports = nextConfig
+// module.exports = {
+//   plugins: [new BundleAnalyzerPlugin()],
+// }
+
+// module.exports = nextConfig

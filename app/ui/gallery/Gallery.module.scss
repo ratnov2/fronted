@@ -47,10 +47,10 @@
   }
 
   .content {
-    @apply relative z-2 text-center m-3 w-full;
+    @apply relative z-2 text-center m-3 w-full flex justify-end flex-col;
 
     .title {
-      @apply font-semibold mb-1 text-white text-shadow;
+      @apply font-semibold mb-1 text-white text-shadow flex-wrap;
     }
 
     .subTitle {
