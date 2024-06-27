@@ -1,7 +1,5 @@
 import { getGenreUrl } from '@/configs/url.config'
-import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 import React, { FC } from 'react'
 import Button from 'ui/form-ui/button/Button'
 import { ISliderItem } from './slider-item.interface'
@@ -9,7 +7,6 @@ import style from './SliderItem.module.scss'
 import { ImgWithLoader } from 'ui/img-with-loader/ImgWithLoader'
 
 const SliderItem: FC<ISliderItem> = ({ movie, currentImg }) => {
-  const { push } = useRouter()
   return (
     <div className={style.sliderItem}>
       <ImgWithLoader img={currentImg} className="w-full" type="slider" />

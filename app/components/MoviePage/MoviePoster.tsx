@@ -27,12 +27,12 @@ const MoviePoster: FC<TypesMoviePoster> = ({ actor, genre }) => {
     movieApi.getById(String(query.movie))
   )
   const { favoritesMovies } = useFavorites()
-  
+
   return (
     <div className={style.BigPoster}>
       <ImgWithLoader
         img={movie.data?.data.bigPoster}
-        className="w-full "
+        className="w-full h-auto"
       />
       {movie.data?.data && (
         <>

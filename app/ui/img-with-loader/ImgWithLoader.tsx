@@ -20,9 +20,13 @@ export const ImgWithLoader: FC<IImgWithLoader> = ({
 }) => {
   const [isLoading, setIsLoading] = useState(true)
   return (
-    <div className={className}>
+    <div className={`${className} aspect-[16/9] `}>
       {img && (
-        <div className={`${style.imageWrapper} ${!isLoading && style.loaded} ${style[type]}`}>
+        <div
+          className={`${style.imageWrapper} ${!isLoading && style.loaded} ${
+            style[type]
+          }`}
+        >
           <Image
             src={img}
             width={1399}
