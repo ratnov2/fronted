@@ -7,7 +7,7 @@ export const Loader = () => {
     <div className="w-full h-full bg-gray-800">
       <div className="w-full h-full flex justify-center items-center">
         <div className={style.loading}></div>
-        <Image src={logo} alt="logo" width={200} height={40} />
+        <Image src={logo} alt="logo" width={200} height={40} priority />
         <div className={style.loading}></div>
       </div>
     </div>
