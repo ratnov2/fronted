@@ -29,7 +29,9 @@ const PopularMovies = () => {
               />
             )
           })}
-          <Button className="mx-5 py-2 w-44">See more</Button>
+          <Link href="/trendMovies">
+            <Button className="mx-5 py-2 w-44">See more</Button>
+          </Link>
         </>
       )}
     </div>

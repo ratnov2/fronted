@@ -8,13 +8,11 @@ import Catalog from 'ui/catalog/Catalog'
 const TrendingNowPage = () => {
   const { popularMovies } = useGlobalProps()
   return (
-    <div>
-      <Catalog
-        movies={popularMovies }
-        title="Trending movies"
-        description="New movies and series in excellent quality: legal, safe, without ads"
-      />
-    </div>
+    <Catalog
+      movies={popularMovies}
+      title="Trending movies"
+      description="New movies and series in excellent quality: legal, safe, without ads"
+    />
   )
 }
 

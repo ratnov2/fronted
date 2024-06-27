@@ -27,24 +27,23 @@ const MainProvider: FC<{
   Component: TypeRoles
   pageProps: AppProps
 }> = ({ children, Component, pageProps }) => {
-  
   return (
-    <>
-      <Provider store={store}>
-        <QueryClientProvider client={queryClient}>
-          <ReduxToastrCus />
-          {process.env.NEXT_PUBLIC_IS_PROD === 'true' && <RouterAndFirstLoading />}
-          <AuthProvider Component={Component}>
-            <GlobalPropsContextProvider
-              globalProps={GlobalProps.extract(pageProps)}
-            >
-              <NextTopLoader showSpinner={false} color="#ff0009" />
-              <Layout>{children}</Layout>
-            </GlobalPropsContextProvider>
-          </AuthProvider>
-        </QueryClientProvider>
-      </Provider>
-    </>
+    <Provider store={store}>
+      <QueryClientProvider client={queryClient}>
+        <ReduxToastrCus />
+        {process.env.NEXT_PUBLIC_IS_PROD === 'true' && (
+          <RouterAndFirstLoading />
+        )}
+        <AuthProvider Component={Component}>
+          <GlobalPropsContextProvider
+            globalProps={GlobalProps.extract(pageProps)}
+          >
+            <NextTopLoader showSpinner={false} color="#ff0009" />
+            <Layout>{children}</Layout>
+          </GlobalPropsContextProvider>
+        </AuthProvider>
+      </QueryClientProvider>
+    </Provider>
   )
 }
 export const getStaticProps = GlobalProps.getStaticProps(async () => {

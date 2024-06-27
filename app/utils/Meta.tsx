@@ -27,7 +27,7 @@ export const Meta: FC<ISeo> = ({
             name="description"
             content={onlyText(description, 152)}
           />
-          <link rel="preload" href="@/assets/logo.png" as="image" />
+         
           <link rel="canonical" href={currentUrl} />
           <meta property="og:locale" content="en" />
           <meta property="og:title" content={titleMerge(title)} />

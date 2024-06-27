@@ -1,9 +1,6 @@
 import { FC } from 'react'
 import style from './leftSidebar.module.scss'
-import logo from '@/assets/logo.png'
 import Image from 'next/image'
-import { useQuery } from 'react-query'
-import { genresApi } from '@/api/dataAPI'
 import MenuRender from './ContainerLeftComp/MenuRender'
 import GenresRenderer from './ContainerLeftComp/GenresRenderer'
 import AuthTable from './ContainerLeftComp/AuthTable'
@@ -14,7 +11,7 @@ const LeftSidebar: FC = () => {
 
   return (
     <div className={style.leftMenu}>
-      <Image src={logo} alt="" width={200} height={40} />
+     <Image src='/assets/logo.png' alt="logo" width={200} height={40} priority/>
       <MenuRender />
       <GenresRenderer genres={genres} />
       <AuthTable />

@@ -29,7 +29,9 @@ const FavoriteMovies = () => {
                 />
               )
             })}
-            <Button className="mx-5 py-2 w-44">See more</Button>
+            <Link href={'/favorite'}>
+              <Button className="mx-5 py-2 w-44">See more</Button>
+            </Link>
           </>
         )
       )}
