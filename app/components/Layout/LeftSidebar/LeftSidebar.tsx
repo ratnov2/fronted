@@ -11,7 +11,13 @@ const LeftSidebar: FC = () => {
 
   return (
     <div className={style.leftMenu}>
-     <Image src='/assets/logo.png' alt="logo" width={200} height={40} priority/>
+      <Image
+        src="/assets/logo.png"
+        alt="logo"
+        width={200}
+        height={40}
+        priority
+      />
       <MenuRender />
       <GenresRenderer genres={genres} />
       <AuthTable />

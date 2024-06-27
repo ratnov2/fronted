@@ -15,7 +15,7 @@ const RouterAndFirstLoading = () => {
     if (!status) {
       setTimeout(() => {
         setIsLoader(true)
-      }, 1500)
+      }, 62500)
     }
   }, [status])
 

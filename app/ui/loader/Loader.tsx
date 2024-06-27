@@ -6,7 +6,7 @@ export const Loader = () => {
     <div className="w-full h-full bg-gray-800">
       <div className="w-full h-full flex justify-center items-center">
         <div className={style.loading}></div>
-        <Image src='/assets/logo.png' alt="logo" width={200} height={40} priority/>
+        <h1 className="font-bold text-3xl tracking-widest">FACinema</h1>
         <div className={style.loading}></div>
       </div>
     </div>

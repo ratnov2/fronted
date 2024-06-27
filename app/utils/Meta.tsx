@@ -15,7 +15,7 @@ export const Meta: FC<ISeo> = ({
   children,
 }) => {
   const { asPath } = useRouter()
-  const currentUrl = `http://localhost:4200/${asPath}`
+  const currentUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/${asPath}`
 
   return (
     <>
@@ -27,7 +27,6 @@ export const Meta: FC<ISeo> = ({
             name="description"
             content={onlyText(description, 152)}
           />
-         
           <link rel="canonical" href={currentUrl} />
           <meta property="og:locale" content="en" />
           <meta property="og:title" content={titleMerge(title)} />
