@@ -33,7 +33,7 @@ export const MovieItem: FC<IMovieInsideSidebar> = ({
     <Link href={`/movie/${id}`} className={style.item}>
       <ImgWithLoader
         img={poster}
-        className="w-[60px] h-full mr-2"
+        className="w-[60px] h-full mr-2 aspect-w-2"
         type="popular"
       />
       <div className={style.descriptionMovie}>
