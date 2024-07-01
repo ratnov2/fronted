@@ -7,10 +7,9 @@
     @apply line-clamp-2 text-xs max-h-10;
   }
   div > .genres {
-    @apply text-gray-600 font-medium text-xs;
+    @apply line-clamp-2 *:text-gray-600 font-medium text-xs;
 
     span {
-      display: inline-block;
       margin-right: 3px;
     }
   }

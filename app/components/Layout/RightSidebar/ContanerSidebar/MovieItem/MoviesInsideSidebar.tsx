@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import style from './style.module.scss'
-import { FC } from 'react'
+import { FC, useMemo } from 'react'
 import { ImgWithLoader } from 'ui/img-with-loader/ImgWithLoader'
 
 import { IGenre } from '@/shared/types/movie.types'
@@ -21,6 +21,14 @@ export const MovieItem: FC<IMovieInsideSidebar> = ({
   title,
   rating,
 }) => {
+  const genresStr = useMemo(() => {
+    let str = ''
+    genres.map((arr) => {
+      str += arr.name + ' '
+    })
+    return str
+  }, [genres])
+
   return (
     <Link href={`/movie/${id}`} className={style.item}>
       <ImgWithLoader
@@ -31,9 +39,7 @@ export const MovieItem: FC<IMovieInsideSidebar> = ({
       <div className={style.descriptionMovie}>
         <h3>{title}</h3>
         <div className={style.genres}>
-          {genres.map((el) => (
-            <span key={el._id}>{el.name}</span>
-          ))}
+          <span>{genresStr}</span>
         </div>
         <Rating rating={rating} />
       </div>
